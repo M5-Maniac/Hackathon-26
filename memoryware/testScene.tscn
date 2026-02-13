@@ -1,3 +1,17 @@
 [gd_scene format=3 uid="uid://b1qq7klyyauyh"]
 
 [node name="Node2D" type="Node2D" unique_id=1816791919]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2114139682]
+offset_left = -46.0
+offset_top = -34.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1367204630]
+modulate = Color(0, 0, 0, 1)
+offset_left = -45.0
+offset_top = -34.0
+offset_right = 41.0
+offset_bottom = 40.0
+text = "AHHHH TESTING!!!!!!!!"
