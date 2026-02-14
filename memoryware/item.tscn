@@ -1,3 +1,16 @@
 [gd_scene format=3 uid="uid://bmgm5n0ui8w8j"]
 
+[ext_resource type="Texture2D" uid="uid://h15kcs2td0cq" path="res://Assets/Trashcan.png" id="1_bp1wp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bp1wp"]
+height = 28.0
+
 [node name="Item" type="Node2D" unique_id=1672590988]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=967431403]
+texture = ExtResource("1_bp1wp")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=72505054]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1556048958]
+shape = SubResource("CapsuleShape2D_bp1wp")
