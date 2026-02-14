@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Memoryware"
-run/main_scene="uid://b1qq7klyyauyh"
+run/main_scene="uid://cvoylfbvu87hn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,12 +21,12 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
-window/stretch/scale=4.0
 
 [file_customization]
 
 folder_colors={
-"res://Assets/": "orange"
+"res://Assets/": "orange",
+"res://Props/": "blue"
 }
 
 [physics]
