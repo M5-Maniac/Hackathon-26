@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cvljajd2i4ced"]
+
+[ext_resource type="Script" uid="uid://btca4nmr36v4c" path="res://Props/Prop.gd" id="1_xjjb2"]
+[ext_resource type="Texture2D" uid="uid://bq5707n02vk1g" path="res://Assets/Backpack.png" id="2_kh62e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xjjb2"]
+radius = 7.999513
+height = 17.998905
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kh62e"]
+radius = 4.999696
+height = 9.999393
+
+[node name="Backpack" type="Node2D" unique_id=1511672953]
+y_sort_enabled = true
+script = ExtResource("1_xjjb2")
+object = 1
+color = 7
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1416578921]
+texture = ExtResource("2_kh62e")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=735887491]
+position = Vector2(-1, 2)
+rotation = -0.57560647
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1787395363]
+position = Vector2(-0.24982464, 2.2220683)
+rotation = 0.56457067
+shape = SubResource("CapsuleShape2D_xjjb2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=2018156729]
+position = Vector2(0.92824906, 7.7548914)
+rotation = 0.56457067
+shape = SubResource("CapsuleShape2D_kh62e")

@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cf3t6fn32pbd6" path="res://Assets/GrassTilesetSmall.png" id="1_wbw1h"]
 [ext_resource type="PackedScene" uid="uid://c4f5qnfb43vx2" path="res://Props/Trashcan.tscn" id="2_286st"]
+[ext_resource type="Script" uid="uid://bbc6n10tge3o4" path="res://Levels/prop_setup.gd" id="2_q1ycg"]
 [ext_resource type="PackedScene" uid="uid://bxes020iwqd6c" path="res://Props/Tree.tscn" id="3_q1ycg"]
+[ext_resource type="PackedScene" uid="uid://cvljajd2i4ced" path="res://Props/Backpack.tscn" id="4_286st"]
 [ext_resource type="Script" uid="uid://c8h46hhl8lsp1" path="res://camera_2d.gd" id="4_y3x56"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lntk"]
@@ -616,6 +618,7 @@ tile_map_data = PackedByteArray("AAD6//3/AAAHAAEAAAD6//z/AAACAAEAAAD5//3/AAABAAM
 tile_set = SubResource("TileSet_w2vy6")
 
 [node name="Props" type="Node2D" parent="." unique_id=873634840]
+script = ExtResource("2_q1ycg")
 
 [node name="Trashcan" parent="Props" unique_id=1453369605 instance=ExtResource("2_286st")]
 position = Vector2(-3, 98)
@@ -649,6 +652,16 @@ position = Vector2(143, 10)
 
 [node name="Tree7" parent="Props" unique_id=1769880798 instance=ExtResource("3_q1ycg")]
 position = Vector2(169, 101)
+
+[node name="Backpack" parent="Props" unique_id=1511672953 instance=ExtResource("4_286st")]
+modulate = Color(0.4187358, 1.3928474, 1.2690654, 1)
+position = Vector2(-90, 67)
+color = 4
+
+[node name="Backpack2" parent="Props" unique_id=1093478567 instance=ExtResource("4_286st")]
+modulate = Color(1.7681202, 1.4699425, 0.31111494, 1)
+position = Vector2(109, 37)
+color = 2
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1154877549]
 ignore_rotation = false

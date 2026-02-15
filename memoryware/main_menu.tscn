@@ -46,7 +46,7 @@ bbcode_enabled = true
 text = "[wave amp=140 freq=7 connected=1][rainbow freq=0.2 sat=0.4 val=1 speed=1.0] MEMORYWARE"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer" unique_id=2020788481]
+[node name="PlayButton" type="Button" parent="MarginContainer" unique_id=2020788481]
 z_index = 100
 custom_minimum_size = Vector2(400, 150)
 layout_mode = 2
@@ -56,4 +56,22 @@ theme_override_fonts/font = ExtResource("1_06t4h")
 theme_override_font_sizes/font_size = 128
 text = "PLAY"
 
-[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]
+[node name="TransitionTimer" type="Timer" parent="." unique_id=1365911821]
+
+[node name="Transition" type="ColorRect" parent="." unique_id=58171095]
+z_index = 1000
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1801.0
+offset_top = -2147.0
+offset_right = -1093.0
+offset_bottom = -1099.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.5235988
+color = Color(0.08365663, 0.204007, 0.30549613, 1)
+
+[connection signal="pressed" from="MarginContainer/PlayButton" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]

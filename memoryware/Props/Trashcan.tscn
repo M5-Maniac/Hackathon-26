@@ -4,15 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://h15kcs2td0cq" path="res://Assets/Trashcan.png" id="2_r0g1w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nu3dp"]
-height = 28.0
+radius = 9.0
+height = 26.0
 
 [node name="Trashcan" type="Node2D" unique_id=1453369605]
+y_sort_enabled = true
 script = ExtResource("1_1qo7j")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1360966796]
+texture = ExtResource("2_r0g1w")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1776254640]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=493193586]
 shape = SubResource("CapsuleShape2D_nu3dp")
-
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1360966796]
-texture = ExtResource("2_r0g1w")
