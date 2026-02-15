@@ -618,6 +618,7 @@ tile_map_data = PackedByteArray("AAD6//3/AAAHAAEAAAD6//z/AAACAAEAAAD5//3/AAABAAM
 tile_set = SubResource("TileSet_w2vy6")
 
 [node name="Props" type="Node2D" parent="." unique_id=873634840]
+y_sort_enabled = true
 script = ExtResource("2_q1ycg")
 
 [node name="Trashcan" parent="Props" unique_id=1453369605 instance=ExtResource("2_286st")]
@@ -633,35 +634,39 @@ position = Vector2(178, -84)
 position = Vector2(-97, 60)
 
 [node name="Tree" parent="Props" unique_id=1845368906 instance=ExtResource("3_q1ycg")]
-position = Vector2(-197, 70)
+position = Vector2(-197, 89)
 
 [node name="Tree2" parent="Props" unique_id=1202050690 instance=ExtResource("3_q1ycg")]
-position = Vector2(-16, -54)
+position = Vector2(-16, -35)
 
 [node name="Tree3" parent="Props" unique_id=586540342 instance=ExtResource("3_q1ycg")]
-position = Vector2(120, -57)
+position = Vector2(120, -38)
 
 [node name="Tree4" parent="Props" unique_id=947244422 instance=ExtResource("3_q1ycg")]
-position = Vector2(-59, 26)
+position = Vector2(-59, 45)
 
 [node name="Tree5" parent="Props" unique_id=1908595584 instance=ExtResource("3_q1ycg")]
-position = Vector2(-132, -83)
+position = Vector2(-132, -64)
 
 [node name="Tree6" parent="Props" unique_id=362721989 instance=ExtResource("3_q1ycg")]
-position = Vector2(143, 10)
+position = Vector2(143, 29)
 
 [node name="Tree7" parent="Props" unique_id=1769880798 instance=ExtResource("3_q1ycg")]
-position = Vector2(169, 101)
+position = Vector2(169, 120)
 
 [node name="Backpack" parent="Props" unique_id=1511672953 instance=ExtResource("4_286st")]
 modulate = Color(0.4187358, 1.3928474, 1.2690654, 1)
-position = Vector2(-90, 67)
+position = Vector2(-89, 67)
 color = 4
 
 [node name="Backpack2" parent="Props" unique_id=1093478567 instance=ExtResource("4_286st")]
 modulate = Color(1.7681202, 1.4699425, 0.31111494, 1)
 position = Vector2(109, 37)
 color = 2
+
+[node name="Backpack3" parent="Props" unique_id=1251884088 instance=ExtResource("4_286st")]
+position = Vector2(-65, 51)
+flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1154877549]
 ignore_rotation = false

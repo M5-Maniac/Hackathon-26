@@ -1,10 +1,11 @@
+@tool
 extends Node2D
  #classification
 enum objects { trash_can, backpack, tree }
 enum colors { red, orange, yellow, green, blue, purple, white, gray, black }
 @export var object = objects.trash_can
 @export var color = colors.blue
-
+@export var flip_h: bool = false
 @export var is_waldo: bool = false #is this an object the player is supposed to click?
 
 var prop_hitbox
@@ -20,7 +21,9 @@ func _ready() -> void:
 			prop_hitbox = child
 		if child.name == "Sprite":
 			prop_sprite = child
-			
+			if flip_h:
+				child.flip_h = true
+		
 	
 	prop_hitbox.mouse_entered.connect(mouse_entered_hitbox)
 	prop_hitbox.mouse_exited.connect(mouse_exited_hitbox)
@@ -33,8 +36,10 @@ func _process(delta: float) -> void:
 	if hovered:
 		get_viewport().set_input_as_handled()
 		scale = scale.move_toward(Vector2(1.1,1.1),0.025)
+		z_index = 1
 	else:
 		scale = scale.move_toward(Vector2(1,1),0.034)
+		z_index = 0
 	
 func mouse_entered_hitbox() -> void:
 	hovered = true
