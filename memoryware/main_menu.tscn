@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cvoylfbvu87hn"]
 
 [ext_resource type="FontFile" uid="uid://dir5njmyrv3ae" path="res://Assets/edit-undo/editundo.ttf" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://bpfwo13pkaayd" path="res://main_menu.gd" id="1_7vrkn"]
 
 [node name="Control" type="Control" unique_id=323320716]
 layout_mode = 3
@@ -9,6 +10,7 @@ offset_left = 64.0
 offset_top = 64.0
 offset_right = 1856.0
 offset_bottom = 1016.0
+script = ExtResource("1_7vrkn")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=854708402]
 layout_mode = 1
@@ -32,18 +34,10 @@ theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="Button" type="Button" parent="MarginContainer" unique_id=2020788481]
-layout_mode = 2
-text = "PLAY"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Button" unique_id=1156791320]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Title" type="RichTextLabel" parent="MarginContainer" unique_id=147502076]
 texture_filter = 1
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/default_color = Color(1.0588765e-06, 0.5708938, 0.6815857, 1)
 theme_override_constants/line_separation = 10
 theme_override_fonts/normal_font = ExtResource("1_06t4h")
@@ -51,3 +45,15 @@ theme_override_font_sizes/normal_font_size = 256
 bbcode_enabled = true
 text = "[wave amp=140 freq=7 connected=1][rainbow freq=0.2 sat=0.4 val=1 speed=1.0] MEMORYWARE"
 horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer" unique_id=2020788481]
+z_index = 100
+custom_minimum_size = Vector2(400, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_06t4h")
+theme_override_font_sizes/font_size = 128
+text = "PLAY"
+
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]
