@@ -27,6 +27,7 @@ func _ready() -> void:
 	
 	prop_hitbox.mouse_entered.connect(mouse_entered_hitbox)
 	prop_hitbox.mouse_exited.connect(mouse_exited_hitbox)
+	prop_hitbox.input_event.connect(hitbox_input_event)
 	
 	
 
@@ -46,3 +47,9 @@ func mouse_entered_hitbox() -> void:
 	
 func mouse_exited_hitbox() -> void:
 	hovered = false
+
+func hitbox_input_event(viewport,event,shape_idx) -> void:
+	if event is InputEventMouseButton:
+		get_viewport().set_input_as_handled()
+		SignalHandler.propClicked.emit(is_waldo, self)
+	

@@ -17,4 +17,5 @@ texture = ExtResource("2_r0g1w")
 [node name="Hitbox" type="Area2D" parent="." unique_id=1776254640]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=493193586]
+visible = false
 shape = SubResource("CapsuleShape2D_nu3dp")

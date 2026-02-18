@@ -26,11 +26,13 @@ position = Vector2(-1, -2)
 rotation = -0.57560647
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1787395363]
+visible = false
 position = Vector2(-0.24982464, 2.2220683)
 rotation = 0.56457067
 shape = SubResource("CapsuleShape2D_xjjb2")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=2018156729]
+visible = false
 position = Vector2(0.92824906, 7.7548914)
 rotation = 0.56457067
 shape = SubResource("CapsuleShape2D_kh62e")
