@@ -19,11 +19,11 @@ color = 7
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1416578921]
 modulate = Color(0, 1.2560822, 0.47761306, 1)
-position = Vector2(0, -4)
+position = Vector2(0, -9)
 texture = ExtResource("2_kh62e")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=735887491]
-position = Vector2(-1, -2)
+position = Vector2(-1, -7)
 rotation = -0.57560647
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1787395363]
@@ -39,6 +39,7 @@ rotation = 0.56457067
 shape = SubResource("CapsuleShape2D_kh62e")
 
 [node name="Sides" type="Node2D" parent="." unique_id=765178977]
+position = Vector2(0, -5)
 
 [node name="Left" type="Marker2D" parent="Sides" unique_id=654910160]
 position = Vector2(-8, 0)

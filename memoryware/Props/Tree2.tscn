@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bxes020iwqd6c"]
+[gd_scene format=3 uid="uid://b4f0n008gh3j2"]
 
-[ext_resource type="Script" uid="uid://btca4nmr36v4c" path="res://Props/Prop.gd" id="1_icwj3"]
-[ext_resource type="Texture2D" uid="uid://dps67yb0kpjuf" path="res://Assets/Trees.png" id="2_72j6q"]
+[ext_resource type="Script" uid="uid://btca4nmr36v4c" path="res://Props/Prop.gd" id="1_klh7s"]
+[ext_resource type="Texture2D" uid="uid://dps67yb0kpjuf" path="res://Assets/Trees.png" id="2_e8ack"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_icwj3"]
 radius = 17.0
@@ -15,33 +15,35 @@ height = 38.0
 size = Vector2(12, 20)
 
 [node name="Tree" type="Node2D" unique_id=1845368906]
-script = ExtResource("1_icwj3")
+script = ExtResource("1_klh7s")
 object = 2
 color = 7
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=173049501]
-position = Vector2(-1, -26)
+[node name="UnmovingSprite" type="Sprite2D" parent="." unique_id=173049501]
+position = Vector2(-1, -24)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_72j6q")
+texture = ExtResource("2_e8ack")
 region_enabled = true
-region_rect = Rect2(8, 0, 168, 256)
+region_rect = Rect2(208, 16, 152, 240)
+
+[node name="Sprite" type="Node2D" parent="." unique_id=477977283]
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1872679400]
 y_sort_enabled = true
-position = Vector2(-1, -26)
+position = Vector2(-1, -19)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=946686905]
 visible = false
-position = Vector2(1, -11)
+position = Vector2(1, -16)
 shape = SubResource("CapsuleShape2D_icwj3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1541661699]
 visible = false
-position = Vector2(1, 4)
+position = Vector2(1, -1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ir6vn")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox" unique_id=420706982]
 visible = false
-position = Vector2(1, 21)
+position = Vector2(1, 14)
 shape = SubResource("RectangleShape2D_fxey7")

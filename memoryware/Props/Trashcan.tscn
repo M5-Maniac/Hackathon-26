@@ -12,11 +12,14 @@ y_sort_enabled = true
 script = ExtResource("1_1qo7j")
 color = 7
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1360966796]
-modulate = Color(1, 0.43, 1.33, 1)
+[node name="UncoloredSprite" type="Sprite2D" parent="." unique_id=1360966796]
+position = Vector2(0, -9)
 texture = ExtResource("2_r0g1w")
 
+[node name="Sprite" type="Node2D" parent="." unique_id=886553155]
+
 [node name="Hitbox" type="Area2D" parent="." unique_id=1776254640]
+position = Vector2(0, -9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=493193586]
 visible = false

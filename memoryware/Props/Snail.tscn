@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://c3jmau60w45xh"]
+
+[ext_resource type="Script" uid="uid://btca4nmr36v4c" path="res://Props/Prop.gd" id="1_bqgjh"]
+[ext_resource type="Texture2D" uid="uid://cmqwp43n34c0s" path="res://Assets/Snail/SnailShell.png" id="2_qki0e"]
+[ext_resource type="Texture2D" uid="uid://banhxyc6jrvdd" path="res://Assets/Snail/SnailBottom.png" id="3_u68dc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kh62e"]
+radius = 4.999696
+height = 9.999393
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qki0e"]
+size = Vector2(10.0324955, 3.0218883)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u68dc"]
+size = Vector2(3.9997501, 9.532536)
+
+[node name="Snail" type="Node2D" unique_id=1511672953]
+y_sort_enabled = true
+script = ExtResource("1_bqgjh")
+object = 3
+color = 7
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1416578921]
+position = Vector2(0, -2)
+texture = ExtResource("2_qki0e")
+
+[node name="UncoloredSprite" type="Sprite2D" parent="." unique_id=1116195035]
+position = Vector2(0, -2)
+texture = ExtResource("3_u68dc")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=735887491]
+position = Vector2(-1, 0)
+rotation = -0.57560647
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=2018156729]
+visible = false
+position = Vector2(2.4718926, -1.9722435)
+rotation = 0.56457067
+shape = SubResource("CapsuleShape2D_kh62e")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox" unique_id=641338362]
+visible = false
+position = Vector2(-0.29330385, 0.43217278)
+rotation = 0.56457067
+shape = SubResource("RectangleShape2D_qki0e")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Hitbox" unique_id=732175511]
+visible = false
+position = Vector2(7.924518, 0.65216064)
+rotation = 0.56457067
+shape = SubResource("RectangleShape2D_u68dc")
+
+[node name="Sides" type="Node2D" parent="." unique_id=765178977]
+position = Vector2(0, -2)
+
+[node name="Left" type="Marker2D" parent="Sides" unique_id=654910160]
+position = Vector2(-8, 0)
+
+[node name="Top" type="Marker2D" parent="Sides" unique_id=1510294071]
+position = Vector2(0, -8)
+
+[node name="Right" type="Marker2D" parent="Sides" unique_id=245707454]
+position = Vector2(7, 0)
+
+[node name="Bottom" type="Marker2D" parent="Sides" unique_id=396909696]
+position = Vector2(2, 8)
