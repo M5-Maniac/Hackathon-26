@@ -20,17 +20,18 @@ object = 2
 color = 7
 
 [node name="UnmovingSprite" type="Sprite2D" parent="." unique_id=173049501]
-position = Vector2(-1, -24)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_e8ack")
+offset = Vector2(-4, -116)
 region_enabled = true
 region_rect = Rect2(208, 16, 152, 240)
 
 [node name="Sprite" type="Node2D" parent="." unique_id=477977283]
+position = Vector2(0, -5)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1872679400]
 y_sort_enabled = true
-position = Vector2(-1, -19)
+position = Vector2(-1, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=946686905]
 visible = false

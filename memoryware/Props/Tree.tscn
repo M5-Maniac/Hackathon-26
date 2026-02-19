@@ -19,16 +19,18 @@ script = ExtResource("1_icwj3")
 object = 2
 color = 7
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=173049501]
-position = Vector2(-1, -26)
+[node name="Sprite" type="Node2D" parent="." unique_id=91422273]
+
+[node name="UncoloredSprite" type="Sprite2D" parent="." unique_id=173049501]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_72j6q")
+offset = Vector2(-4, -128)
 region_enabled = true
 region_rect = Rect2(8, 0, 168, 256)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1872679400]
 y_sort_enabled = true
-position = Vector2(-1, -26)
+position = Vector2(-1, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=946686905]
 visible = false

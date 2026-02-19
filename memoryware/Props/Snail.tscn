@@ -21,15 +21,15 @@ object = 3
 color = 7
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1416578921]
-position = Vector2(0, -2)
 texture = ExtResource("2_qki0e")
+offset = Vector2(0, -4)
 
 [node name="UncoloredSprite" type="Sprite2D" parent="." unique_id=1116195035]
-position = Vector2(0, -2)
 texture = ExtResource("3_u68dc")
+offset = Vector2(0, -4)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=735887491]
-position = Vector2(-1, 0)
+position = Vector2(-1, -2)
 rotation = -0.57560647
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=2018156729]
@@ -51,7 +51,7 @@ rotation = 0.56457067
 shape = SubResource("RectangleShape2D_u68dc")
 
 [node name="Sides" type="Node2D" parent="." unique_id=765178977]
-position = Vector2(0, -2)
+position = Vector2(0, -4)
 
 [node name="Left" type="Marker2D" parent="Sides" unique_id=654910160]
 position = Vector2(-8, 0)

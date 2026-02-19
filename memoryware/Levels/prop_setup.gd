@@ -6,9 +6,9 @@ extends Node2D
 @onready var transition: ColorRect = $"../Transition"
 
 @export var backpack_count: int = 15
-@export var tree_count: int = 13
+@export var tree_count: int = 5
 @export var trashcan_count: int = 10
-@export var snail_count: int = 15
+@export var snail_count: int = 10
 
 const BACKPACK = preload("uid://cvljajd2i4ced")
 const TRASHCAN = preload("uid://c4f5qnfb43vx2")
@@ -32,15 +32,15 @@ func _ready() -> void:
 	
 	
 	decide_waldo()
-	print(waldo)
 	match waldo_type:
 		0:
 			task_label.text = "Find the " + str(waldo.colors.find_key(waldo.color)) + " " + str(waldo.objects.find_key(waldo.object)) + "!"
 		1:
-			task_label.text = "Find the only stationary " + str(waldo.objects.find_key(waldo.object)) + "!"
-		2:
 			task_label.text = "Find the only moving " + str(waldo.objects.find_key(waldo.object)) + "!"
-			
+		2:
+			task_label.text = "Find the only stationary " + str(waldo.objects.find_key(waldo.object)) + "!"
+
+
 	for backpacks in range(backpack_count): #backpacks
 		var new_prop = BACKPACK.instantiate()
 		spawnProp(new_prop, true, true)
@@ -63,9 +63,12 @@ func _ready() -> void:
 	
 	Global.propClicked.connect(prop_clicked)
 	Global.propDropped.connect(prop_dropped)
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	transition.position = transition.position.move_toward(Vector2(484,-186),25)
+
 
 func prop_clicked(is_waldo,clicked_prop) -> void:
 	if is_waldo:
@@ -80,8 +83,7 @@ func prop_dropped(dropped_prop) -> void:
 func spawnProp(new_prop, colored: bool, flip_h: bool) -> void:
 	new_prop.position.x = randi_range(-240,240)
 	new_prop.position.y = randi_range(-130,130)
-	new_prop.anchor_pos = position
-	
+	new_prop.orig_pos = new_prop.position
 	if flip_h:
 		new_prop.flip_h = (randf() < 0.5)
 		
@@ -89,8 +91,12 @@ func spawnProp(new_prop, colored: bool, flip_h: bool) -> void:
 		new_prop.color = randi_range(0,new_prop.colors.size()-1)
 		while new_prop.color == waldo.color:
 			new_prop.color = randi_range(0,new_prop.colors.size()-1)
-			
 	props.add_child(new_prop)
+	while new_prop.prop_hitbox.get_overlapping_areas().size()>0:
+		new_prop.position.x = randi_range(-240,240)
+		new_prop.position.y = randi_range(-130,130)
+		new_prop.orig_pos = new_prop.position
+		print("hello")
 
 func decide_waldo():
 	var waldo_prop
@@ -99,27 +105,30 @@ func decide_waldo():
 		0: #DIFFERENT COLOR
 			waldo_prop = color_props[randi_range(0,color_props.size()-1)]
 			waldo = waldo_prop.instantiate()
-			waldo.position.x = randi_range(-240,240)
-			waldo.position.y = randi_range(-130,130)
+			waldo.position.x = randi_range(-230,230)
+			waldo.position.y = randi_range(-120,120)
+			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			props.add_child(waldo)
 		1: #ONLY MOVING PROP OF A NON-MOVING TYPE
-			waldo_prop = movement_props[randi_range(0,movement_props.size()-1)]
-			waldo = waldo_prop.instantiate()
-			waldo.position.x = randi_range(-240,240)
-			waldo.position.y = randi_range(-130,130)
-			waldo.color = randi_range(0,waldo.colors.size()-1)
-			if randf()<0.5:
-				waldo.x_range = randi_range(150,200)
-			else:
-				waldo.y_range = randi_range(150,200)
-			waldo.speed = randi_range(1,2)
-			props.add_child(waldo)
-		2:
 			waldo_prop = no_movement_props[randi_range(0,no_movement_props.size()-1)]
 			waldo = waldo_prop.instantiate()
-			waldo.position.x = randi_range(-240,240)
-			waldo.position.y = randi_range(-130,130)
+			waldo.position.x = randi_range(-230,230)
+			waldo.position.y = randi_range(-120,120)
+			waldo.orig_pos = waldo.position
+			waldo.color = randi_range(0,waldo.colors.size()-1)
+			if randf()<0.5:
+				waldo.x_range = randi_range(10,20)
+			else:
+				waldo.y_range = randi_range(10,20)
+			waldo.speed = randf_range(0.02,0.03)
+			props.add_child(waldo)
+		2: #ONLY NON-MOVING PROP OF A MOVING TYPE
+			waldo_prop = movement_props[randi_range(0,movement_props.size()-1)]
+			waldo = waldo_prop.instantiate()
+			waldo.position.x = randi_range(-230,230)
+			waldo.position.y = randi_range(-120,120)
+			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			props.add_child(waldo)
 	waldo.is_waldo = true

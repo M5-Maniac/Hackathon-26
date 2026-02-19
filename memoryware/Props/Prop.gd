@@ -10,8 +10,8 @@ enum colors { red, orange, yellow, green, blue, purple, white, gray, black }
 
 @export var x_range: int = 0
 @export var y_range: int = 0
-@export var anchor_pos: Vector2 = Vector2(0,0)
 @export var speed: float = 1
+@export var orig_pos: Vector2
 
 var prop_hitbox
 var prop_sprite
@@ -78,15 +78,15 @@ func _process(delta: float) -> void:
 		z_index = 0
 		
 	#Moving props
-	if x_range != 0:
-		position.x += x_range * sin(Time.get_ticks_msec()*speed/2500+speed)*delta
+	if x_range != 0 and !grabbed:
+		position.x = orig_pos.x + x_range * sin(Time.get_ticks_msec()*speed/2500+speed)
 		#sprite direction
-		if sin(Time.get_ticks_msec()*speed/2500+speed) < 0:
+		if cos(Time.get_ticks_msec()*speed/2500+speed) < 0:
 			scale.x = -1
 		else:
 			scale.x = 1
-	if y_range != 0:
-		position.y += y_range * sin(Time.get_ticks_msec()*speed/2500+speed)*delta
+	if y_range != 0 and !grabbed:
+		position.y = orig_pos.y + y_range * sin(Time.get_ticks_msec()*speed/2500)
 	
 func mouse_entered_hitbox() -> void:
 	if !Global.inputHandled:
@@ -104,6 +104,7 @@ func hitbox_input_event(viewport,event,shape_idx) -> void:
 				Global.propClicked.emit(is_waldo, self)
 		else:
 			if grabbed:
+				orig_pos = position
 				Global.propDropped.emit(self)
 			Global.inputHandled = false
 			grabbed = false
