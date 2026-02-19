@@ -10,8 +10,10 @@ height = 26.0
 [node name="Trashcan" type="Node2D" unique_id=1453369605]
 y_sort_enabled = true
 script = ExtResource("1_1qo7j")
+color = 7
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1360966796]
+modulate = Color(1, 0.43, 1.33, 1)
 texture = ExtResource("2_r0g1w")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1776254640]

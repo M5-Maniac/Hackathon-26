@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://c4f5qnfb43vx2" path="res://Props/Trashcan.tscn" id="2_286st"]
 [ext_resource type="Script" uid="uid://bbc6n10tge3o4" path="res://Levels/prop_setup.gd" id="2_q1ycg"]
 [ext_resource type="PackedScene" uid="uid://bxes020iwqd6c" path="res://Props/Tree.tscn" id="3_q1ycg"]
-[ext_resource type="PackedScene" uid="uid://cvljajd2i4ced" path="res://Props/Backpack.tscn" id="4_286st"]
 [ext_resource type="Script" uid="uid://c8h46hhl8lsp1" path="res://camera_2d.gd" id="4_y3x56"]
 [ext_resource type="PackedScene" uid="uid://suyqf0ki86vh" path="res://click_particle.tscn" id="7_y3x56"]
 [ext_resource type="FontFile" uid="uid://dir5njmyrv3ae" path="res://Assets/edit-undo/editundo.ttf" id="8_qc8g6"]
@@ -641,30 +640,12 @@ position = Vector2(143, 29)
 [node name="Tree7" parent="Props" unique_id=1769880798 instance=ExtResource("3_q1ycg")]
 position = Vector2(169, 120)
 
-[node name="Backpack" parent="Props" unique_id=1511672953 instance=ExtResource("4_286st")]
-modulate = Color(0.4187358, 1.3928474, 1.2690654, 1)
-position = Vector2(-89, 67)
-color = 4
-
-[node name="Backpack2" parent="Props" unique_id=1093478567 instance=ExtResource("4_286st")]
-modulate = Color(1.7681202, 1.4699425, 0.31111494, 1)
-position = Vector2(109, 37)
-color = 2
-
-[node name="Backpack3" parent="Props" unique_id=1251884088 instance=ExtResource("4_286st")]
-modulate = Color(1.2119955, 0.46847752, 1.366, 1)
-position = Vector2(-65, 51)
-color = 5
-flip_h = true
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1154877549]
 ignore_rotation = false
 zoom = Vector2(4, 4)
 script = ExtResource("4_y3x56")
 
-[node name="ClickParticle" parent="." unique_id=1348139992 instance=ExtResource("7_y3x56")]
-
-[node name="TaskLabel" type="RichTextLabel" parent="." unique_id=1352093294]
+[node name="TaskLabel" type="RichTextLabel" parent="Camera2D" unique_id=1352093294]
 offset_left = -240.0
 offset_top = -134.0
 offset_right = 239.0
@@ -674,3 +655,19 @@ theme_override_fonts/normal_font = ExtResource("8_qc8g6")
 theme_override_font_sizes/normal_font_size = 32
 text = "TEST"
 horizontal_alignment = 1
+
+[node name="ClickParticle" parent="." unique_id=1348139992 instance=ExtResource("7_y3x56")]
+
+[node name="Transition" type="ColorRect" parent="." unique_id=1401210668]
+z_index = 1000
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -163.62956
+offset_top = -479.81647
+offset_right = 522.0033
+offset_bottom = 188.26709
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.5235988
+color = Color(0.08365663, 0.204007, 0.30549613, 1)

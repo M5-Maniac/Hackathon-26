@@ -10,6 +10,7 @@ enum colors { red, orange, yellow, green, blue, purple, white, gray, black }
 
 var prop_hitbox
 var prop_sprite
+var markers: Array
 var hovered: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -23,6 +24,31 @@ func _ready() -> void:
 			prop_sprite = child
 			if flip_h:
 				child.flip_h = true
+		if child.name == "Sides":
+			for marker in child.get_children():
+				markers.append(marker)
+			
+	if true: 
+		if color == colors.gray:
+			prop_sprite.modulate = Color(1,1,1)
+		elif color == colors.white:
+			prop_sprite.modulate = Color(2,2,2)
+		elif color == colors.black:
+			prop_sprite.modulate = Color(0.5,0.5,0.5)
+		elif color == colors.red:
+			prop_sprite.modulate = Color(1.4,0.00,0.1)
+		elif color == colors.orange:
+			prop_sprite.modulate = Color(1.67, 0.74, 0.0)
+		elif color == colors.yellow:
+			prop_sprite.modulate = Color(1.86, 1.4, 0.0)
+		elif color == colors.green:
+			prop_sprite.modulate = Color(0.0,1.25,0.47)
+		elif color == colors.blue:
+			prop_sprite.modulate = Color(1,0.43,1.33)
+		elif color == colors.purple:
+			prop_sprite.modulate = Color(1,0.43,1.33)
+			
+		
 		
 	
 	prop_hitbox.mouse_entered.connect(mouse_entered_hitbox)
