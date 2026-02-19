@@ -10,6 +10,7 @@ enum colors { red, orange, yellow, green, blue, purple, white, gray, black }
 
 @export var x_range: int = 0
 @export var y_range: int = 0
+@export var anchor_pos: Vector2 = Vector2(0,0)
 @export var speed: float = 1
 
 var prop_hitbox
