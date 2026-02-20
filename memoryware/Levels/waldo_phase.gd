@@ -35,24 +35,11 @@ func _process(delta: float) -> void:
 
 func time_ran_out() -> void:
 	print("You lost!")
-
-func transition_over() -> void:
-	print("You won!")
-	get_tree().change_scene_to_file("res://questions.tscn")
-
-	
-func prop_clicked(is_waldo, prop) -> void:
-	if is_waldo:
-	if !won:
-		game_timer.paused = true
-		phase = phases.end
-		Global.lives -= 1
-		end_timer.start()
 	
 func transition_over() -> void:
 	if won:
 		print("You won!")
-		get_tree().change_scene_to_file("res://Levels/Level.tscn")
+		get_tree().change_scene_to_file("res://questions.tscn")
 	elif Global.lives > 0:
 		print("You lost a life!")
 		get_tree().change_scene_to_file("res://Levels/Level.tscn")
@@ -67,6 +54,7 @@ func prop_clicked(is_waldo, prop) -> void:
 		won = true
 		phase = phases.end
 		Global.difficulty += 1
+		
 		end_timer.start()
 		
 		
