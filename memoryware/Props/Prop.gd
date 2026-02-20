@@ -84,9 +84,9 @@ func _process(delta: float) -> void:
 		
 	#PROPS THAT MOVE
 	if x_range != 0 and !grabbed:
-		position.x = orig_pos.x + x_range * sin(Time.get_ticks_msec()*speed/2500+speed)
+		position.x = orig_pos.x + x_range * cos(Time.get_ticks_msec()*speed/2500+speed)
 		#sprite direction
-		if cos(Time.get_ticks_msec()*speed/2500+speed) < 0:
+		if -sin(Time.get_ticks_msec()*speed/2500+speed) < 0:
 			scale.x = -1
 		else:
 			scale.x = 1
@@ -98,6 +98,7 @@ func _process(delta: float) -> void:
 	
 	if spin != 0: 
 		rotation += spin
+		
 	
 func mouse_entered_hitbox() -> void:
 	if !Global.inputHandled:
@@ -113,12 +114,16 @@ func hitbox_input_event(viewport,event,shape_idx) -> void:
 				Global.inputHandled = true
 				grabbed = true
 				Global.propClicked.emit(is_waldo, self)
-		else:
-			if grabbed:
-				orig_pos = position
-				Global.propDropped.emit(self)
-			Global.inputHandled = false
-			grabbed = false
-			
+				grab_offset = get_global_mouse_position()-position
+	
+
+
+func _input(event) -> void:
+	if event is InputEventMouseButton and !event.pressed:
+		if grabbed:
+			orig_pos = position
+			Global.propDropped.emit(self)
+		Global.inputHandled = false
+		grabbed = false
 		grab_offset = get_global_mouse_position()-position
 	
