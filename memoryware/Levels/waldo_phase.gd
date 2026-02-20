@@ -1,5 +1,5 @@
 extends Node2D
-
+ 
 enum phases {game, end}
 var phase = phases.game
 var gameTime: float = 20
@@ -35,18 +35,16 @@ func _process(delta: float) -> void:
 
 
 
-=======
 			transition.position = transition.position.move_toward(Vector2(-157,-489),25)
 
 	Global.lives = 3   # <-- reset lives when start scene loads
 	
->>>>>>> Stashed changes
 func time_ran_out() -> void:
 	print("You lost!")
 
 func transition_over() -> void:
 	print("You won!")
-	get_tree().change_scene_to_file("res://Levels/Level.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Level1.tscn")
 
 	
 func prop_clicked(is_waldo, prop) -> void:

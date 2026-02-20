@@ -29,7 +29,7 @@ func show_question():
 	$CanvasLayer/QuestionPanel/QuestionText.text = "What color was the Tree?"
 	$CanvasLayer/QuestionPanel/AnswerA.text = "orange"
 	$CanvasLayer/QuestionPanel/AnswerB.text = "Bronze"
-	$CanvasLayer/QuestionPanel/AnswerC.text = "An mix of both"
+	$CanvasLayer/QuestionPanel/AnswerC.text = "Dark Orange"
 	
 	correct_answer = "B"
 
@@ -49,7 +49,7 @@ func check_answer(choice):
 		print("Correct!")
 		$CanvasLayer/QuestionPanel.visible = false
 		# Move to next level
-		get_tree().change_scene_to_file("res://Levels/Level.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Level1.tscn")
 	else:
 		print("Wrong!")
 		Global.lives -= 1
