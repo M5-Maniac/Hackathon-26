@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://tjxdwfrkhgqs" path="res://questions.gd" id="1_uqn54"]
 
 [node name="Node2D" type="Node2D" unique_id=561788628]
+position = Vector2(4, 7)
 script = ExtResource("1_uqn54")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1935860486]
@@ -10,31 +11,39 @@ script = ExtResource("1_uqn54")
 [node name="QuestionPanel" type="Panel" parent="CanvasLayer" unique_id=43735014]
 modulate = Color(2.7285533, 0.38336563, 9.542506, 1)
 anchors_preset = -1
-anchor_left = -0.11000001
+anchor_left = -0.11800001
 anchor_top = -0.09900001
 anchor_right = -0.11000001
 anchor_bottom = -0.09900001
-offset_left = -233.79999
-offset_top = -134.07999
-offset_right = 201.19998
-offset_bottom = 133.92004
+offset_left = 5.560013
+offset_top = -30.079994
+offset_right = 425.19998
+offset_bottom = 237.92004
 
 [node name="QuestionText" type="Label" parent="CanvasLayer/QuestionPanel" unique_id=2070853955]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 423.0
+offset_bottom = 268.0
 
 [node name="AnswerA" type="Button" parent="CanvasLayer/QuestionPanel/QuestionText" unique_id=1167360226]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 61.0
+offset_top = 94.0
+offset_right = 359.0
+offset_bottom = 253.0
+text = "wow
+"
 
-[node name="Answer C" type="Button" parent="CanvasLayer/QuestionPanel/QuestionText" unique_id=22019994]
+[node name="AnswerB" type="Button" parent="CanvasLayer/QuestionPanel/QuestionText" unique_id=1856911947]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 
-[node name="AnswerB" type="Button" parent="CanvasLayer/QuestionPanel/QuestionText/Answer C" unique_id=1856911947]
+[node name="AnswerC" type="Button" parent="CanvasLayer/QuestionPanel/QuestionText" unique_id=22019994]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1736487817]
+position = Vector2(-8, -6)
+zoom = Vector2(4, 4)

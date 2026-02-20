@@ -11,7 +11,8 @@ var correct_answer = "A"
 # ---- Called when scene starts ----
 func _ready() -> void:
 	# Hide question panel at start
-	question_panel.visible = false
+	question_panel.visible = true
+	
 	
 	# Connect buttons to root script
 	answer_a.pressed.connect(_on_answer_a_pressed)
@@ -52,7 +53,7 @@ func check_answer(choice):
 		print("Correct!")
 		question_panel.visible = false
 		# Move to next level
-		get_tree().change_scene_to_file("res://Scenes/Level1.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Level.tscn")
 	else:
 		print("Wrong!")
 		Global.lives -= 1

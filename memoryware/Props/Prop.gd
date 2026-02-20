@@ -103,7 +103,7 @@ func _process(delta: float) -> void:
 		position.y = orig_pos.y + y_range * cos(Time.get_ticks_msec()*speed/2500+move_offset)
 		
 	if prop_skew !=0:
-		skew = prop_skew * 0.01 * sin(Time.get_ticks_msec()*speed/2500)
+		skew = prop_skew * 0.01 * sin(Time.get_ticks_msec()*speed/1000)
 	
 	if spin != 0: 
 		rotation += spin
