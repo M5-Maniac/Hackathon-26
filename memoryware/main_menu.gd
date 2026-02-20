@@ -13,7 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if transitioning:
-		transition.position = transition.position.move_toward(Vector2(300,-1000),100)
+		transition.position = transition.position.move_toward(Vector2(-147,-362),25)
 
 
 
