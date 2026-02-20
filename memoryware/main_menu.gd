@@ -8,7 +8,7 @@ var transitioning: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.difficulty = 1
-
+	Global.lives = 3
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

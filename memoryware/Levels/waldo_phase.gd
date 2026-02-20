@@ -34,7 +34,11 @@ func _process(delta: float) -> void:
 			transition_2.position = transition_2.position.move_toward(Vector2(-157,-489),25)
 
 func time_ran_out() -> void:
-	print("You lost!")
+	if !won:
+		game_timer.paused = true
+		phase = phases.end
+		Global.lives -= 1
+		end_timer.start()
 	
 func transition_over() -> void:
 	if won:

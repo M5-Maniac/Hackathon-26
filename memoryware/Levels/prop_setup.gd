@@ -139,10 +139,10 @@ func decide_waldo():
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			if randf()<0.5:
-				waldo.x_range = randi_range(25,35)
+				waldo.x_range = randi_range(clamp(int(25-Global.difficulty),10,100),clamp(int(35-Global.difficulty/2),10,100))
 			else:
 				waldo.y_range = randi_range(20,25)
-			waldo.speed = randf_range(0.25,0.35)
+			waldo.speed = randf_range(1/Global.difficulty+0.1,2/Global.difficulty+0.2)
 			props.add_child(waldo)
 		2: #ONLY NON-MOVING PROP OF A MOVING TYPE
 			waldo_prop = movement_props[randi_range(0,movement_props.size()-1)]
