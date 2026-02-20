@@ -121,9 +121,9 @@ func decide_waldo():
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			if randf()<0.5:
-				waldo.x_range = randi_range(20,30)
+				waldo.x_range = randi_range(25,35)
 			else:
-				waldo.y_range = randi_range(15,25)
+				waldo.y_range = randi_range(20,25)
 			waldo.speed = randf_range(0.25,0.35)
 			props.add_child(waldo)
 		2: #ONLY NON-MOVING PROP OF A MOVING TYPE

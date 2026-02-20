@@ -592,6 +592,12 @@ terrain_set_0/terrain_1/name = "Dirt"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_5lntk")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1ycg"]
+bg_color = Color(0.23492564, 0.23492564, 0.23492564, 0.47100002)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3x56"]
+bg_color = Color(0.88393724, 0.88393724, 0.88393724, 0.675)
+
 [node name="Node2D" type="Node2D" unique_id=1816791919]
 script = ExtResource("1_q1ycg")
 
@@ -627,7 +633,10 @@ horizontal_alignment = 1
 offset_left = -133.0
 offset_top = -106.0
 offset_right = 133.0
-offset_bottom = -94.0
+offset_bottom = -98.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_q1ycg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y3x56")
 show_percentage = false
 
 [node name="ClickParticle" parent="." unique_id=1348139992 instance=ExtResource("7_y3x56")]
@@ -646,7 +655,22 @@ grow_vertical = 2
 rotation = 0.5235988
 color = Color(0.08365663, 0.204007, 0.30549613, 1)
 
+[node name="Transition2" type="ColorRect" parent="." unique_id=2095030160]
+z_index = 1000
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1173.0
+offset_top = -1050.0
+offset_right = -487.36713
+offset_bottom = -381.91644
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.5235988
+color = Color(0.08365663, 0.204007, 0.30549613, 1)
+
 [node name="EndTimer" type="Timer" parent="." unique_id=1387535855]
+wait_time = 1.5
 
 [node name="GameTimer" type="Timer" parent="." unique_id=1416522149]
 wait_time = 20.0
