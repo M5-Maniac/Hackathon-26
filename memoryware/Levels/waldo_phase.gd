@@ -12,6 +12,7 @@ var gameTime: float = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+<<<<<<< Updated upstream
 	game_timer.wait_time = gameTime
 	game_timer.start()
 	game_timer.timeout.connect(time_ran_out)
@@ -29,6 +30,16 @@ func _process(delta: float) -> void:
 			transition.position = transition.position.move_toward(Vector2(484,-186),25)
 		1:
 			transition.position = transition.position.move_toward(Vector2(-157,-489),25)
+=======
+	Global.lives = 3   # <-- reset lives when start scene loads
+	game_timer.start()
+	game_timer.timeout.connect(time_ran_out)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	progress_bar.value = game_timer.time_left * 5
+
+>>>>>>> Stashed changes
 func time_ran_out() -> void:
 	print("You lost!")
 
