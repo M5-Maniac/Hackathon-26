@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cf3t6fn32pbd6" path="res://Assets/GrassTilesetSmall.png" id="1_wbw1h"]
 [ext_resource type="Script" uid="uid://bbc6n10tge3o4" path="res://Levels/prop_setup.gd" id="2_q1ycg"]
 [ext_resource type="Script" uid="uid://c8h46hhl8lsp1" path="res://camera_2d.gd" id="4_y3x56"]
+[ext_resource type="PackedScene" uid="uid://bkr280of2gmq8" path="res://life_display.tscn" id="7_qc8g6"]
 [ext_resource type="PackedScene" uid="uid://suyqf0ki86vh" path="res://click_particle.tscn" id="7_y3x56"]
 [ext_resource type="FontFile" uid="uid://dir5njmyrv3ae" path="res://Assets/edit-undo/editundo.ttf" id="8_qc8g6"]
 
@@ -619,6 +620,7 @@ zoom = Vector2(4, 4)
 script = ExtResource("4_y3x56")
 
 [node name="TaskLabel" type="RichTextLabel" parent="Camera2D" unique_id=1352093294]
+z_index = 3
 texture_filter = 1
 offset_left = -240.0
 offset_top = -134.0
@@ -631,6 +633,7 @@ text = "TEST"
 horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="Camera2D" unique_id=893655791]
+z_index = 3
 offset_left = -133.0
 offset_top = -113.0
 offset_right = 133.0
@@ -676,5 +679,7 @@ wait_time = 1.5
 [node name="GameTimer" type="Timer" parent="." unique_id=1416522149]
 wait_time = 20.0
 one_shot = true
+
+[node name="LifeDisplay" parent="." unique_id=997425920 instance=ExtResource("7_qc8g6")]
 
 [connection signal="timeout" from="GameTimer" to="Props" method="_on_game_timer_timeout"]

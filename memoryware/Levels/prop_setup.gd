@@ -6,11 +6,11 @@ extends Node2D
 @onready var transition: ColorRect = $"../Transition"
 
 
-@export var backpack_count: int = 12
-@export var tree_count: int = 5
-@export var trashcan_count: int = 4
-@export var snail_count: int = 6
-@export var balloon_count: int = 4
+@export var backpack_count: int = randi_range(floor(1+Global.difficulty/2),floor(Global.difficulty)+4)
+@export var tree_count: int = randi_range(floor(0+Global.difficulty/4),floor(Global.difficulty/2.5)+2)
+@export var trashcan_count: int = randi_range(floor(1+Global.difficulty/2),floor(Global.difficulty/1.5)+2)
+@export var snail_count: int = randi_range(floor(0+Global.difficulty/3),floor(Global.difficulty/2)+1)
+@export var balloon_count: int = randi_range(floor(0+Global.difficulty/3),floor(Global.difficulty/2)+2)
 
 const BACKPACK = preload("res://Props/Backpack.tscn")
 const TRASHCAN = preload("res://Props/Trashcan.tscn")
@@ -67,6 +67,7 @@ func _ready() -> void:
 		new_prop.y_range = randi_range(40,70)
 		new_prop.speed = randf_range(0.5,1)
 		new_prop.z_index = 2
+		waldo.speed = randf_range(1,1.5)
 		
 		
 	#SIGNAL CONNECTIONS
@@ -92,8 +93,8 @@ func prop_dropped(dropped_prop) -> void:
 
 #FUNCTION FOR SPAWNING PROPS
 func spawnProp(new_prop, colored: bool, flip_h: bool) -> void:
-	new_prop.position.x = randi_range(-240,240)
-	new_prop.position.y = randi_range(-130,130)
+	new_prop.position.x = randi_range(-230,230)
+	new_prop.position.y = randi_range(-90,115)
 	new_prop.orig_pos = new_prop.position
 	if flip_h:
 		new_prop.flip_h = (randf() < 0.5)
@@ -104,8 +105,8 @@ func spawnProp(new_prop, colored: bool, flip_h: bool) -> void:
 	props.add_child(new_prop)
 	#THIS CODE IS BROKEN RN DOESNT WORK. need to fix
 	while new_prop.prop_hitbox.get_overlapping_areas().size()>0:
-		new_prop.position.x = randi_range(-240,240)
-		new_prop.position.y = randi_range(-130,130)
+		new_prop.position.x = randi_range(-230,230)
+		new_prop.position.y = randi_range(-90,115)
 		new_prop.orig_pos = new_prop.position
 		print("hello")
 
@@ -118,7 +119,7 @@ func decide_waldo():
 			waldo_prop = color_props[randi_range(0,color_props.size()-1)]
 			waldo = waldo_prop.instantiate()
 			waldo.position.x = randi_range(-230,230)
-			waldo.position.y = randi_range(-110,110)
+			waldo.position.y = randi_range(-90,115)
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			props.add_child(waldo)
@@ -134,7 +135,7 @@ func decide_waldo():
 			waldo_prop = no_movement_props[randi_range(0,no_movement_props.size()-1)]
 			waldo = waldo_prop.instantiate()
 			waldo.position.x = randi_range(-230,230)
-			waldo.position.y = randi_range(-110,110)
+			waldo.position.y = randi_range(-90,115)
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			if randf()<0.5:
@@ -147,7 +148,7 @@ func decide_waldo():
 			waldo_prop = movement_props[randi_range(0,movement_props.size()-1)]
 			waldo = waldo_prop.instantiate()
 			waldo.position.x = randi_range(-230,230)
-			waldo.position.y = randi_range(-110,110)
+			waldo.position.y = randi_range(-90,115)
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			props.add_child(waldo)
