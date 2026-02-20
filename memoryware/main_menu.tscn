@@ -2,6 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://dir5njmyrv3ae" path="res://Assets/edit-undo/editundo.ttf" id="1_06t4h"]
 [ext_resource type="Script" uid="uid://bpfwo13pkaayd" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="PackedScene" uid="uid://bxes020iwqd6c" path="res://Props/Tree.tscn" id="4_glbon"]
+[ext_resource type="PackedScene" uid="uid://c3jmau60w45xh" path="res://Props/Snail.tscn" id="4_jix8l"]
 
 [node name="Control" type="Control" unique_id=323320716]
 layout_mode = 3
@@ -65,6 +67,83 @@ size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_06t4h")
 theme_override_font_sizes/font_size = 32
 text = "PLAY"
+
+[node name="Tree" parent="MarginContainer" unique_id=2133939019 instance=ExtResource("4_glbon")]
+position = Vector2(95, 220)
+prop_skew = 30.0
+
+[node name="Tree2" parent="MarginContainer" unique_id=1845368906 instance=ExtResource("4_glbon")]
+position = Vector2(145, 220)
+prop_skew = 30.0
+
+[node name="Tree3" parent="MarginContainer" unique_id=1084082494 instance=ExtResource("4_glbon")]
+position = Vector2(195, 220)
+prop_skew = 30.0
+
+[node name="Tree4" parent="MarginContainer" unique_id=549288130 instance=ExtResource("4_glbon")]
+position = Vector2(245, 220)
+prop_skew = 30.0
+
+[node name="Tree5" parent="MarginContainer" unique_id=504443343 instance=ExtResource("4_glbon")]
+position = Vector2(295, 220)
+prop_skew = 30.0
+
+[node name="Tree6" parent="MarginContainer" unique_id=1762102631 instance=ExtResource("4_glbon")]
+position = Vector2(345, 220)
+prop_skew = 30.0
+
+[node name="Tree7" parent="MarginContainer" unique_id=1962342732 instance=ExtResource("4_glbon")]
+position = Vector2(395, 220)
+prop_skew = 30.0
+
+[node name="Tree8" parent="MarginContainer" unique_id=880251712 instance=ExtResource("4_glbon")]
+position = Vector2(445, 220)
+prop_skew = 30.0
+
+[node name="Snail" parent="MarginContainer" unique_id=1511672953 instance=ExtResource("4_jix8l")]
+position = Vector2(95, 150)
+color = 0
+prop_skew = 30.0
+
+[node name="Snail2" parent="MarginContainer" unique_id=1009485932 instance=ExtResource("4_jix8l")]
+position = Vector2(145, 150)
+color = 1
+prop_skew = 30.0
+
+[node name="Snail3" parent="MarginContainer" unique_id=2075106232 instance=ExtResource("4_jix8l")]
+position = Vector2(195, 150)
+color = 2
+prop_skew = 30.0
+
+[node name="Snail4" parent="MarginContainer" unique_id=275323671 instance=ExtResource("4_jix8l")]
+position = Vector2(245, 150)
+color = 3
+prop_skew = 30.0
+
+[node name="Snail5" parent="MarginContainer" unique_id=1814053769 instance=ExtResource("4_jix8l")]
+position = Vector2(295, 150)
+color = 4
+prop_skew = 30.0
+
+[node name="Snail6" parent="MarginContainer" unique_id=661170282 instance=ExtResource("4_jix8l")]
+position = Vector2(345, 150)
+color = 5
+prop_skew = 30.0
+
+[node name="Snail7" parent="MarginContainer" unique_id=1123134163 instance=ExtResource("4_jix8l")]
+position = Vector2(395, 150)
+color = 6
+prop_skew = 30.0
+
+[node name="Snail8" parent="MarginContainer" unique_id=290062429 instance=ExtResource("4_jix8l")]
+position = Vector2(445, 150)
+color = 8
+prop_skew = 30.0
+
+[node name="Snail9" parent="MarginContainer" unique_id=1390818184 instance=ExtResource("4_jix8l")]
+position = Vector2(270, 125)
+scale = Vector2(3, 3)
+spin = 0.2
 
 [node name="TransitionTimer" type="Timer" parent="." unique_id=1365911821]
 

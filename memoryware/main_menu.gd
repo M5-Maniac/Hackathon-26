@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 		transition.position = transition.position.move_toward(Vector2(-147,-362),25)
 
 
+	
+
 
 func _on_button_pressed() -> void: #main menu button
 	play_button.disabled = true

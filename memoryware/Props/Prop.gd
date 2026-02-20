@@ -15,6 +15,8 @@ enum colors { red, orange, yellow, green, blue, purple, white, gray, black }
 @export var direction: int = 1
 @export var speed: float = 1
 @export var orig_pos: Vector2
+@export var prop_skew: float = 0
+@export var spin: float = 0
 
 var prop_hitbox
 var prop_sprite
@@ -90,6 +92,12 @@ func _process(delta: float) -> void:
 			scale.x = 1
 	if y_range != 0 and !grabbed:
 		position.y = orig_pos.y + y_range * sin(Time.get_ticks_msec()*speed/2500)
+		
+	if prop_skew !=0:
+		skew = prop_skew * 0.01 * sin(Time.get_ticks_msec()*speed/750)
+	
+	if spin != 0: 
+		rotation += spin
 	
 func mouse_entered_hitbox() -> void:
 	if !Global.inputHandled:
