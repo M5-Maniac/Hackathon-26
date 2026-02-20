@@ -3,7 +3,7 @@ extends Node2D
  #classification
 
 #VARIABLE DECLARATION
-enum objects { trashcan, backpack, tree, snail } #list of possible objects
+enum objects { trashcan, backpack, tree, snail, balloon } #list of possible objects
 enum colors { red, orange, yellow, green, blue, purple, white, gray, black }
 @export var object = objects.trashcan
 @export var color = colors.blue
@@ -74,13 +74,15 @@ func _process(delta: float) -> void:
 	if grabbed: #Code for dragging props.
 		scale = scale.move_toward(Vector2(1.16,1.16),0.025)
 		position = get_global_mouse_position()-grab_offset
-		z_index = 1
+		if z_index != 2:
+			z_index = 1
 	elif hovered: #Scales up prop based on hovered bool.
 		if !Global.inputHandled:
 			scale = scale.move_toward(Vector2(1.08,1.08),0.025)
 	else: #If the prop is neither hovered o'er, nor grabbed.
 		scale = scale.move_toward(Vector2(1,1),0.034)
-		z_index = 0
+		if z_index != 2:
+			z_index = 0
 		
 	#PROPS THAT MOVE
 	if x_range != 0 and !grabbed:
