@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://d17kcqixbdso3"]
+
+[ext_resource type="Script" uid="uid://tjxdwfrkhgqs" path="res://questions.gd" id="1_uqn54"]
+
+[node name="Node2D" type="Node2D" unique_id=561788628]
+script = ExtResource("1_uqn54")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1935860486]
+
+[node name="QuestionPanel" type="Panel" parent="CanvasLayer" unique_id=43735014]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="QuestionText" type="Label" parent="CanvasLayer/QuestionPanel" unique_id=2070853955]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AnswerA" type="Button" parent="CanvasLayer/QuestionPanel/QuestionText" unique_id=1167360226]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="AnswerB" type="Button" parent="CanvasLayer/QuestionPanel/QuestionText" unique_id=1856911947]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Answer C" type="Button" parent="CanvasLayer/QuestionPanel/QuestionText" unique_id=22019994]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
