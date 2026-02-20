@@ -105,12 +105,16 @@ func hitbox_input_event(viewport,event,shape_idx) -> void:
 				Global.inputHandled = true
 				grabbed = true
 				Global.propClicked.emit(is_waldo, self)
-		else:
-			if grabbed:
-				orig_pos = position
-				Global.propDropped.emit(self)
-			Global.inputHandled = false
-			grabbed = false
-			
+				grab_offset = get_global_mouse_position()-position
+	
+
+
+func _input(event) -> void:
+	if event is InputEventMouseButton and !event.pressed:
+		if grabbed:
+			orig_pos = position
+			Global.propDropped.emit(self)
+		Global.inputHandled = false
+		grabbed = false
 		grab_offset = get_global_mouse_position()-position
 	

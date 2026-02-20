@@ -67,9 +67,8 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	#transition effect
-	transition.position = transition.position.move_toward(Vector2(484,-186),25)
-
+	pass 
+	
 #WHEN A PROP IS CLICKED
 func prop_clicked(is_waldo,clicked_prop) -> void:
 	if is_waldo:
