@@ -44,7 +44,7 @@ func time_ran_out() -> void:
 
 func transition_over() -> void:
 	print("You won!")
-	get_tree().change_scene_to_file("res://Scenes/Level1.tscn")
+	get_tree().change_scene_to_file("res://questions.tscn")
 
 	
 func prop_clicked(is_waldo, prop) -> void:

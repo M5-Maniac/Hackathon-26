@@ -80,9 +80,10 @@ func _process(delta: float) -> void:
 		if !Global.inputHandled:
 			scale = scale.move_toward(Vector2(1.08,1.08),0.025)
 	else: #If the prop is neither hovered o'er, nor grabbed.
-		scale = scale.move_toward(Vector2(1,1),0.034)
-		if z_index != 2:
-			z_index = 0
+		if z_index != 355: #don't do this for the title screen snail
+			scale = scale.move_toward(Vector2(1,1),0.034)
+			if z_index != 2:
+				z_index = 0
 		
 	#PROPS THAT MOVE
 	if x_range != 0 and !grabbed:
