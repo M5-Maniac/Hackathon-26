@@ -11,11 +11,12 @@ extends Node2D
 @export var trashcan_count: int = 10
 @export var snail_count: int = 10
 
-const BACKPACK = preload("uid://cvljajd2i4ced")
-const TRASHCAN = preload("uid://c4f5qnfb43vx2")
-const TREE = preload("uid://bxes020iwqd6c")
-const TREE_2 = preload("uid://b4f0n008gh3j2")
-const SNAIL = preload("uid://c3jmau60w45xh")
+const BACKPACK = preload("res://Props/Backpack.tscn")
+const TRASHCAN = preload("res://Props/Trashcan.tscn")
+const TREE = preload("res://Props/Tree.tscn")
+const TREE_2 = preload("res://Props/Tree2.tscn")
+const SNAIL = preload("res://Props/Snail.tscn")
+
 
 enum waldo_types { only_color, only_movement, only_stopped}
 var color_props: Array = [BACKPACK,SNAIL] #Props that can be differentiated by color.
@@ -57,7 +58,7 @@ func _ready() -> void:
 		var new_prop = SNAIL.instantiate()
 		spawnProp(new_prop, true, false)
 		new_prop.x_range = randi_range(10,50)
-		new_prop.speed = randf_range(0.5,2)
+		new_prop.speed = randf_range(0.3,1)
 		
 	#SIGNAL CONNECTIONS
 	Global.propClicked.connect(prop_clicked)
@@ -109,7 +110,7 @@ func decide_waldo():
 			waldo_prop = color_props[randi_range(0,color_props.size()-1)]
 			waldo = waldo_prop.instantiate()
 			waldo.position.x = randi_range(-230,230)
-			waldo.position.y = randi_range(-120,120)
+			waldo.position.y = randi_range(-110,110)
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			props.add_child(waldo)
@@ -117,7 +118,7 @@ func decide_waldo():
 			waldo_prop = no_movement_props[randi_range(0,no_movement_props.size()-1)]
 			waldo = waldo_prop.instantiate()
 			waldo.position.x = randi_range(-230,230)
-			waldo.position.y = randi_range(-120,120)
+			waldo.position.y = randi_range(-110,110)
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			if randf()<0.5:
@@ -130,7 +131,7 @@ func decide_waldo():
 			waldo_prop = movement_props[randi_range(0,movement_props.size()-1)]
 			waldo = waldo_prop.instantiate()
 			waldo.position.x = randi_range(-230,230)
-			waldo.position.y = randi_range(-120,120)
+			waldo.position.y = randi_range(-110,110)
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			props.add_child(waldo)

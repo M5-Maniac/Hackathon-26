@@ -82,14 +82,14 @@ func _process(delta: float) -> void:
 		
 	#PROPS THAT MOVE
 	if x_range != 0 and !grabbed:
-		position.x = orig_pos.x + x_range * sin(Time.get_ticks_msec()*speed/2500+speed)
+		position.x = orig_pos.x + x_range * cos(Time.get_ticks_msec()*speed/2500+speed)
 		#sprite direction
-		if cos(Time.get_ticks_msec()*speed/2500+speed) < 0:
+		if -sin(Time.get_ticks_msec()*speed/2500+speed) < 0:
 			scale.x = -1
 		else:
 			scale.x = 1
 	if y_range != 0 and !grabbed:
-		position.y = orig_pos.y + y_range * sin(Time.get_ticks_msec()*speed/2500)
+		position.y = orig_pos.y + y_range * cos(Time.get_ticks_msec()*speed/2500)
 	
 func mouse_entered_hitbox() -> void:
 	if !Global.inputHandled:
