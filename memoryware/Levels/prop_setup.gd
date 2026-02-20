@@ -5,6 +5,7 @@ extends Node2D
 @onready var props: Node2D = $"."
 @onready var transition: ColorRect = $"../Transition"
 
+
 @export var backpack_count: int = 15
 @export var tree_count: int = 5
 @export var trashcan_count: int = 10
@@ -27,10 +28,8 @@ var waldo_type = waldo_types.only_color
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var prop_count = get_child_count()
-	#var waldo_prop = randi_range(0,prop_count-1)
-	#get_child(waldo_prop).is_waldo = true #random prop selection
 	
-	
+	#WALDO SPAWNING
 	decide_waldo()
 	match waldo_type:
 		0:
@@ -40,7 +39,7 @@ func _ready() -> void:
 		2:
 			task_label.text = "Find the only stationary " + str(waldo.objects.find_key(waldo.object)) + "!"
 
-
+	#EXTRA PROP SPAWNING
 	for backpacks in range(backpack_count): #backpacks
 		var new_prop = BACKPACK.instantiate()
 		spawnProp(new_prop, true, true)
@@ -60,44 +59,48 @@ func _ready() -> void:
 		new_prop.x_range = randi_range(10,50)
 		new_prop.speed = randf_range(0.5,2)
 		
-	
+	#SIGNAL CONNECTIONS
 	Global.propClicked.connect(prop_clicked)
 	Global.propDropped.connect(prop_dropped)
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	#transition effect
 	transition.position = transition.position.move_toward(Vector2(484,-186),25)
 
-
+#WHEN A PROP IS CLICKED
 func prop_clicked(is_waldo,clicked_prop) -> void:
 	if is_waldo:
 		clicked_prop.queue_free()
 		click_particle.emitting = true
 		click_particle.position = get_global_mouse_position()
-	
+
+#WHEN A PROP IS DROPPED
 func prop_dropped(dropped_prop) -> void:
 	for prop in get_children():
 		pass #want to add behavior here later to sort nodes based on y-value
-		
+
+#FUNCTION FOR SPAWNING PROPS
 func spawnProp(new_prop, colored: bool, flip_h: bool) -> void:
 	new_prop.position.x = randi_range(-240,240)
 	new_prop.position.y = randi_range(-130,130)
 	new_prop.orig_pos = new_prop.position
 	if flip_h:
 		new_prop.flip_h = (randf() < 0.5)
-		
 	if colored:
 		new_prop.color = randi_range(0,new_prop.colors.size()-1)
 		while new_prop.color == waldo.color:
 			new_prop.color = randi_range(0,new_prop.colors.size()-1)
 	props.add_child(new_prop)
+	#THIS CODE IS BROKEN RN DOESNT WORK. need to fix
 	while new_prop.prop_hitbox.get_overlapping_areas().size()>0:
 		new_prop.position.x = randi_range(-240,240)
 		new_prop.position.y = randi_range(-130,130)
 		new_prop.orig_pos = new_prop.position
 		print("hello")
 
+#Function that decides which waldo question to ask, and sets the prop.
 func decide_waldo():
 	var waldo_prop
 	waldo_type = randi_range(0,waldo_types.size()-1) #0: diff color, 1: no movement
@@ -118,10 +121,10 @@ func decide_waldo():
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			if randf()<0.5:
-				waldo.x_range = randi_range(10,20)
+				waldo.x_range = randi_range(20,30)
 			else:
-				waldo.y_range = randi_range(10,20)
-			waldo.speed = randf_range(0.02,0.03)
+				waldo.y_range = randi_range(15,25)
+			waldo.speed = randf_range(0.25,0.35)
 			props.add_child(waldo)
 		2: #ONLY NON-MOVING PROP OF A MOVING TYPE
 			waldo_prop = movement_props[randi_range(0,movement_props.size()-1)]

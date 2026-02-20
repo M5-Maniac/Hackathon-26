@@ -1,6 +1,8 @@
 
 extends Node2D
  #classification
+
+#VARIABLE DECLARATION
 enum objects { trashcan, backpack, tree, snail } #list of possible objects
 enum colors { red, orange, yellow, green, blue, purple, white, gray, black }
 @export var object = objects.trashcan
@@ -10,6 +12,7 @@ enum colors { red, orange, yellow, green, blue, purple, white, gray, black }
 
 @export var x_range: int = 0
 @export var y_range: int = 0
+@export var direction: int = 1
 @export var speed: float = 1
 @export var orig_pos: Vector2
 
@@ -22,7 +25,6 @@ var grab_offset: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	#Finds hitbox in the prop, sets it to a variable. probably an inefficient way of doing this but oh well
 	for child in get_children():
 		if child.name == "Hitbox":
@@ -31,10 +33,11 @@ func _ready() -> void:
 			prop_sprite = child
 			if flip_h:
 				child.flip_h = true
-		if child.name == "Sides":
-			for marker in child.get_children():
-				markers.append(marker)
-			
+		#if child.name == "Sides":
+			#for marker in child.get_children():
+				#markers.append(marker)
+				
+	#COLOR MODULATION
 	if true: 
 		if color == colors.gray:
 			prop_sprite.modulate = Color(1,1,1)
@@ -57,7 +60,7 @@ func _ready() -> void:
 			
 		
 		
-	
+	#SIGNAL CONNECTION
 	prop_hitbox.mouse_entered.connect(mouse_entered_hitbox)
 	prop_hitbox.mouse_exited.connect(mouse_exited_hitbox)
 	prop_hitbox.input_event.connect(hitbox_input_event)
@@ -77,7 +80,7 @@ func _process(delta: float) -> void:
 		scale = scale.move_toward(Vector2(1,1),0.034)
 		z_index = 0
 		
-	#Moving props
+	#PROPS THAT MOVE
 	if x_range != 0 and !grabbed:
 		position.x = orig_pos.x + x_range * sin(Time.get_ticks_msec()*speed/2500+speed)
 		#sprite direction
