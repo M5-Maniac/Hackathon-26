@@ -2,7 +2,6 @@ extends Node2D
  
 enum phases {game, end}
 var phase = phases.game
-var gameTime: float = 20
 var gameTime: float = clamp(20-Global.difficulty/2,5,100)
 var won: bool = false
 
@@ -34,20 +33,6 @@ func _process(delta: float) -> void:
 		1:
 			transition_2.position = transition_2.position.move_toward(Vector2(-157,-489),25)
 
-
-
-
-			transition.position = transition.position.move_toward(Vector2(-157,-489),25)
-
-	Global.lives = 3   # <-- reset lives when start scene loads
-	
-func time_ran_out() -> void:
-	print("You lost!")
-
-func transition_over() -> void:
-	print("You won!")
-	get_tree().change_scene_to_file("res://Scenes/Level1.tscn")
-
 func time_ran_out() -> void:
 	if !won:
 		game_timer.paused = true
@@ -68,7 +53,6 @@ func transition_over() -> void:
 		
 		
 func prop_clicked(is_waldo, prop) -> void:
-	if is_waldo:
 	if is_waldo and !game_timer.paused:
 		game_timer.paused = true
 		won = true
