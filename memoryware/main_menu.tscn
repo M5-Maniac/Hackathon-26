@@ -138,6 +138,7 @@ prop_skew = 30.0
 [node name="Snail8" parent="MarginContainer" unique_id=290062429 instance=ExtResource("4_jix8l")]
 position = Vector2(445, 150)
 color = 8
+flip_h = true
 prop_skew = 30.0
 
 [node name="Snail9" parent="MarginContainer" unique_id=1390818184 instance=ExtResource("4_jix8l")]

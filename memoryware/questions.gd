@@ -1,4 +1,9 @@
 extends Node2D  # attach this to your main scene root (Node2D)
+@onready var question_panel: Panel = $CanvasLayer/QuestionPanel
+@onready var question_text: Label = $CanvasLayer/QuestionPanel/QuestionText
+@onready var answer_a: Button = $CanvasLayer/QuestionPanel/QuestionText/AnswerA
+@onready var answer_b: Button = $CanvasLayer/QuestionPanel/QuestionText/AnswerB
+@onready var answer_c: Button = $CanvasLayer/QuestionPanel/QuestionText/AnswerC
 
 # ---- Variables ----
 var correct_answer = "A"
@@ -6,22 +11,15 @@ var correct_answer = "A"
 # ---- Called when scene starts ----
 func _ready() -> void:
 	# Hide question panel at start
-	$CanvasLayer/QuestionPanel.visible = false
+	question_panel.visible = false
 	
 	# Connect buttons to root script
-	$CanvasLayer/QuestionPanel/AnswerA.pressed.connect(_on_answer_a_pressed)
-	$CanvasLayer/QuestionPanel/AnswerB.pressed.connect(_on_answer_b_pressed)
-	$CanvasLayer/QuestionPanel/AnswerC.pressed.connect(_on_answer_c_pressed)
+	answer_a.pressed.connect(_on_answer_a_pressed)
+	answer_b.pressed.connect(_on_answer_b_pressed)
+	answer_c.pressed.connect(_on_answer_c_pressed)
 	
-	# Reset lives
-	Global.lives = 3
-	
-	# If you already have your timers or other setup, keep them here
-	# Example from your start scene:
-	# game_timer.start()
-	# game_timer.timeout.connect(time_ran_out)
-	# end_timer.timeout.connect(transition_over)
-	# Global.propClicked.connect(prop_clicked)
+func _process(_delta: float) -> void:
+	pass
 
 # ---- Show question ----
 func show_question():
@@ -31,6 +29,11 @@ func show_question():
 	$CanvasLayer/QuestionPanel/AnswerB.text = "Bronze"
 	$CanvasLayer/QuestionPanel/AnswerC.text = "Dark Orange"
 	
+	question_panel.visible = true
+	question_text.text = "How many balloons were there?"
+	answer_a.text = "2"
+	answer_b.text = "4"
+	answer_c.text = "6"
 	correct_answer = "B"
 
 # ---- Button pressed handlers ----
@@ -47,7 +50,7 @@ func _on_answer_c_pressed():
 func check_answer(choice):
 	if choice == correct_answer:
 		print("Correct!")
-		$CanvasLayer/QuestionPanel.visible = false
+		question_panel.visible = false
 		# Move to next level
 		get_tree().change_scene_to_file("res://Scenes/Level1.tscn")
 	else:

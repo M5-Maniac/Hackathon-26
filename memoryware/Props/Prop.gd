@@ -18,8 +18,10 @@ enum colors { red, orange, yellow, green, blue, purple, white, gray, black }
 @export var prop_skew: float = 0
 @export var spin: float = 0
 
+var move_offset = randf_range(0,3.14)
 var prop_hitbox
 var prop_sprite
+var uncolored_sprite
 var markers: Array
 var hovered: bool = false
 var grabbed: bool = false
@@ -33,6 +35,10 @@ func _ready() -> void:
 			prop_hitbox = child
 		if child.name == "Sprite":
 			prop_sprite = child
+			if flip_h:
+				child.flip_h = true
+		if child.name == "UncoloredSprite":
+			uncolored_sprite = child
 			if flip_h:
 				child.flip_h = true
 		#if child.name == "Sides":
@@ -87,17 +93,17 @@ func _process(delta: float) -> void:
 		
 	#PROPS THAT MOVE
 	if x_range != 0 and !grabbed:
-		position.x = orig_pos.x + x_range * cos(Time.get_ticks_msec()*speed/2500+speed)
+		position.x = orig_pos.x + x_range * cos(Time.get_ticks_msec()*speed/2500+move_offset)
 		#sprite direction
-		if -sin(Time.get_ticks_msec()*speed/2500+speed) < 0:
+		if -sin(Time.get_ticks_msec()*speed/2500+move_offset) < 0:
 			scale.x = -1
 		else:
 			scale.x = 1
 	if y_range != 0 and !grabbed:
-		position.y = orig_pos.y + y_range * sin(Time.get_ticks_msec()*speed/2500)
+		position.y = orig_pos.y + y_range * cos(Time.get_ticks_msec()*speed/2500+move_offset)
 		
 	if prop_skew !=0:
-		skew = prop_skew * 0.01 * sin(Time.get_ticks_msec()*speed/750)
+		skew = prop_skew * 0.01 * sin(Time.get_ticks_msec()*speed/2500)
 	
 	if spin != 0: 
 		rotation += spin
@@ -126,6 +132,7 @@ func _input(event) -> void:
 		if grabbed:
 			orig_pos = position
 			Global.propDropped.emit(self)
+			move_offset = -Time.get_ticks_msec()*speed/2500+PI/2
 		Global.inputHandled = false
 		grabbed = false
 		grab_offset = get_global_mouse_position()-position
