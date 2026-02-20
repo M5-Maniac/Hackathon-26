@@ -6,22 +6,24 @@ extends Node2D
 @onready var transition: ColorRect = $"../Transition"
 
 
-@export var backpack_count: int = 15
+@export var backpack_count: int = 12
 @export var tree_count: int = 5
-@export var trashcan_count: int = 10
-@export var snail_count: int = 10
+@export var trashcan_count: int = 4
+@export var snail_count: int = 6
+@export var balloon_count: int = 4
 
 const BACKPACK = preload("res://Props/Backpack.tscn")
 const TRASHCAN = preload("res://Props/Trashcan.tscn")
 const TREE = preload("res://Props/Tree.tscn")
 const TREE_2 = preload("res://Props/Tree2.tscn")
 const SNAIL = preload("res://Props/Snail.tscn")
+const BALLOON = preload("res://Props/Balloon.tscn")
 
 
 enum waldo_types { only_color, only_movement, only_stopped}
-var color_props: Array = [BACKPACK,SNAIL] #Props that can be differentiated by color.
+var color_props: Array = [BACKPACK,SNAIL, BALLOON] #Props that can be differentiated by color.
 var no_movement_props: Array = [TREE,TREE_2,TRASHCAN,BACKPACK] #Props that are typically stationary.
-var movement_props: Array = [SNAIL] #Props that normally move.
+var movement_props: Array = [SNAIL, BALLOON] #Props that normally move.
 
 var waldo
 var waldo_type = waldo_types.only_color
@@ -36,9 +38,9 @@ func _ready() -> void:
 		0:
 			task_label.text = "Find the " + str(waldo.colors.find_key(waldo.color)) + " " + str(waldo.objects.find_key(waldo.object)) + "!"
 		1:
-			task_label.text = "Find the only moving " + str(waldo.objects.find_key(waldo.object)) + "!"
+			task_label.text = "Find the moving " + str(waldo.objects.find_key(waldo.object)) + "!"
 		2:
-			task_label.text = "Find the only stationary " + str(waldo.objects.find_key(waldo.object)) + "!"
+			task_label.text = "Find the stationary " + str(waldo.objects.find_key(waldo.object)) + "!"
 
 	#EXTRA PROP SPAWNING
 	for backpacks in range(backpack_count): #backpacks
@@ -57,8 +59,15 @@ func _ready() -> void:
 	for snails in range(snail_count): #backpacks
 		var new_prop = SNAIL.instantiate()
 		spawnProp(new_prop, true, false)
-		new_prop.x_range = randi_range(10,50)
-		new_prop.speed = randf_range(0.3,1)
+		new_prop.x_range = randi_range(15,50)
+		new_prop.speed = randf_range(0.3,0.8)
+	for balloons in range(balloon_count): #backpacks
+		var new_prop = BALLOON.instantiate()
+		spawnProp(new_prop, true, false)
+		new_prop.y_range = randi_range(40,70)
+		new_prop.speed = randf_range(0.5,1)
+		new_prop.z_index = 2
+		
 		
 	#SIGNAL CONNECTIONS
 	Global.propClicked.connect(prop_clicked)
@@ -113,6 +122,14 @@ func decide_waldo():
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			props.add_child(waldo)
+			if waldo_prop == BALLOON:
+				waldo.y_range = randi_range(40,70)
+				waldo.speed = randf_range(0.5,1)
+				waldo.z_index = 2
+			elif waldo_prop == SNAIL:
+				waldo.x_range = randi_range(15,50)
+				waldo.speed = randf_range(0.3,0.8)
+				
 		1: #ONLY MOVING PROP OF A NON-MOVING TYPE
 			waldo_prop = no_movement_props[randi_range(0,no_movement_props.size()-1)]
 			waldo = waldo_prop.instantiate()
@@ -134,4 +151,6 @@ func decide_waldo():
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			props.add_child(waldo)
+			if waldo_prop == BALLOON:
+				waldo.z_index = 2
 	waldo.is_waldo = true

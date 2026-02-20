@@ -32,10 +32,15 @@ func _process(delta: float) -> void:
 		1:
 			transition_2.position = transition_2.position.move_toward(Vector2(-157,-489),25)
 
+
+
+
+=======
 			transition.position = transition.position.move_toward(Vector2(-157,-489),25)
 
 	Global.lives = 3   # <-- reset lives when start scene loads
 	
+>>>>>>> Stashed changes
 func time_ran_out() -> void:
 	print("You lost!")
 

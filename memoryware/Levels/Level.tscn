@@ -619,21 +619,22 @@ zoom = Vector2(4, 4)
 script = ExtResource("4_y3x56")
 
 [node name="TaskLabel" type="RichTextLabel" parent="Camera2D" unique_id=1352093294]
+texture_filter = 1
 offset_left = -240.0
 offset_top = -134.0
 offset_right = 239.0
 offset_bottom = -94.0
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("8_qc8g6")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 24
 text = "TEST"
 horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="Camera2D" unique_id=893655791]
 offset_left = -133.0
-offset_top = -106.0
+offset_top = -113.0
 offset_right = 133.0
-offset_bottom = -98.0
+offset_bottom = -105.0
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_q1ycg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_y3x56")

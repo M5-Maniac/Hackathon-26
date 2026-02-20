@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://c3jmau60w45xh"]
+[gd_scene format=3 uid="uid://2femgomg5qm1"]
 
-[ext_resource type="Script" uid="uid://btca4nmr36v4c" path="res://Props/Prop.gd" id="1_bqgjh"]
-[ext_resource type="Texture2D" uid="uid://cmqwp43n34c0s" path="res://Assets/Snail/SnailShell.png" id="2_qki0e"]
-[ext_resource type="Texture2D" uid="uid://banhxyc6jrvdd" path="res://Assets/Snail/SnailBottom.png" id="3_u68dc"]
+[ext_resource type="Script" uid="uid://btca4nmr36v4c" path="res://Props/Prop.gd" id="1_6ssgm"]
+[ext_resource type="Texture2D" uid="uid://y7ob6lp148b8" path="res://Assets/Balloon/BalloonTop.png" id="2_6ssgm"]
+[ext_resource type="Texture2D" uid="uid://cv1eke5qts2tn" path="res://Assets/Balloon/BalloonString.png" id="3_1dv3s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kh62e"]
 radius = 4.999696
@@ -14,19 +14,21 @@ size = Vector2(10.0324955, 3.0218883)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u68dc"]
 size = Vector2(3.9997501, 9.532536)
 
-[node name="Snail" type="Node2D" unique_id=1511672953]
+[node name="Balloon" type="Node2D" unique_id=1511672953]
 y_sort_enabled = true
-script = ExtResource("1_bqgjh")
-object = 3
+script = ExtResource("1_6ssgm")
+object = 4
 color = 7
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1416578921]
-texture = ExtResource("2_qki0e")
-offset = Vector2(0, -4)
+position = Vector2(0, 11)
+texture = ExtResource("2_6ssgm")
+offset = Vector2(0, -15)
 
 [node name="UncoloredSprite" type="Sprite2D" parent="." unique_id=1116195035]
-texture = ExtResource("3_u68dc")
-offset = Vector2(0, -4)
+position = Vector2(0, 11)
+texture = ExtResource("3_1dv3s")
+offset = Vector2(0, -15)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=735887491]
 position = Vector2(-1, -2)
