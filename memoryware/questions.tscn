@@ -4,12 +4,6 @@
 [ext_resource type="FontFile" uid="uid://dir5njmyrv3ae" path="res://Assets/edit-undo/editundo.ttf" id="3_dp6bu"]
 [ext_resource type="PackedScene" uid="uid://bkr280of2gmq8" path="res://life_display.tscn" id="3_ygnt8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rry2l"]
-bg_color = Color(0.23492564, 0.23492564, 0.23492564, 0.47100002)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qer7j"]
-bg_color = Color(0.88393724, 0.88393724, 0.88393724, 0.675)
-
 [node name="Questions" type="Node2D" unique_id=1299180049]
 script = ExtResource("1_uqn54")
 
@@ -83,32 +77,36 @@ theme_override_fonts/font = ExtResource("3_dp6bu")
 text = "wow
 "
 
+[node name="Transition" type="ColorRect" parent="CanvasLayer" unique_id=1649651871]
+z_index = 1000
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -405.0
+offset_right = -1446.0
+offset_bottom = -885.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.5235988
+color = Color(0.08365663, 0.204007, 0.30549613, 1)
+
+[node name="Transition2" type="ColorRect" parent="CanvasLayer" unique_id=746444890]
+z_index = 1000
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1250.0
+offset_top = -1082.9999
+offset_right = -2570.0
+offset_bottom = -1562.9999
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.5235988
+color = Color(0.08365663, 0.204007, 0.30549613, 1)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1485265638]
 ignore_rotation = false
 zoom = Vector2(4, 4)
-
-[node name="TaskLabel" type="RichTextLabel" parent="Camera2D" unique_id=146433656]
-z_index = 3
-texture_filter = 1
-offset_left = -240.0
-offset_top = -134.0
-offset_right = 239.0
-offset_bottom = -94.0
-mouse_filter = 2
-theme_override_fonts/normal_font = ExtResource("3_dp6bu")
-theme_override_font_sizes/normal_font_size = 24
-text = "TEST"
-horizontal_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="Camera2D" unique_id=1833243182]
-z_index = 3
-offset_left = -133.0
-offset_top = -113.0
-offset_right = 133.0
-offset_bottom = -105.0
-mouse_filter = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_rry2l")
-theme_override_styles/fill = SubResource("StyleBoxFlat_qer7j")
-show_percentage = false
 
 [node name="LifeDisplay" parent="." unique_id=997425920 instance=ExtResource("3_ygnt8")]

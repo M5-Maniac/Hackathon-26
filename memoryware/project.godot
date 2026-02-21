@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Memoryware"
-run/main_scene="uid://cvoylfbvu87hn"
+run/main_scene="uid://b4jvahp5c0xqi"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

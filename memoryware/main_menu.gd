@@ -7,6 +7,7 @@ extends Control
 var transitioning: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("Starting!")
 	Global.difficulty = 1
 	Global.lives = 3
 
@@ -28,4 +29,5 @@ func _on_button_pressed() -> void: #main menu button
 
 
 func _on_transition_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://Levels/Level.tscn")
+	#get_tree().change_scene_to_file("res://Levels/Level.tscn")
+	Global.switchToLevel.emit()

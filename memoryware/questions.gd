@@ -5,7 +5,11 @@ extends Node2D  # attach this to your main scene root (Node2D)
 @onready var answer_b: Button = $CanvasLayer/QuestionPanel/QuestionText/AnswerB
 @onready var answer_c: Button = $CanvasLayer/QuestionPanel/QuestionText/AnswerC
 
+@onready var transition: ColorRect = $CanvasLayer/Transition
+@onready var transition_2: ColorRect = $CanvasLayer/Transition2
 
+enum phases {game, end}
+var phase = phases.game
 # ---- Variables ----
 var correct_answer: int = Global.correct_answer
 var question: String = Global.question
@@ -23,25 +27,43 @@ func _ready() -> void:
 	answer_c.pressed.connect(_on_answer_c_pressed)
 	
 func _process(_delta: float) -> void:
-	pass
+	match phase:
+		0:
+			transition.position = transition.position.move_toward(Vector2(484,-186),25)
+		1:
+			transition_2.position = transition_2.position.move_toward(Vector2(-157,-489),25)
+
 
 # ---- Show question ----
 func show_question():
 	question_panel.visible = true
 	question_text.text = Global.question
-
+	
+	var randomAddition: int = randi_range(0,1+floor(10/Global.difficulty))
 	match correct_answer_index:
+		#1:
+			#answer_a.text = str(correct_answer)
+			#answer_b.text = str(int(correct_answer+floor(1+(10+randi_range(0,10))/Global.difficulty)))
+			#answer_c.text = str(int(correct_answer+floor(2+randf()*30*1/Global.difficulty)))
+		#2:
+			#answer_a.text = str(int(correct_answer+floor(-1-randf()*15*1/Global.difficulty)))
+			#answer_b.text = str(correct_answer)
+			#answer_c.text = str(int(correct_answer+floor(1+randf()*15*1/Global.difficulty)))
+		#3:
+			#answer_a.text = str(int(correct_answer+floor(-2-randf()*30*1/Global.difficulty)))
+			#answer_b.text = str(int(correct_answer+floor(-1-(10+randi_range(0,10))/Global.difficulty)))
+			#answer_c.text = str(correct_answer)
 		1:
 			answer_a.text = str(correct_answer)
-			answer_b.text = str(int(correct_answer+floor(1+randf()*15*1/Global.difficulty)))
-			answer_c.text = str(int(correct_answer+floor(2+randf()*30*1/Global.difficulty)))
+			answer_b.text = str(int(correct_answer+1+randi_range(0,randomAddition)))
+			answer_c.text = str(int(correct_answer+2+randi_range(randomAddition,randomAddition*2)))
 		2:
-			answer_a.text = str(int(correct_answer+floor(-1-randf()*15*1/Global.difficulty)))
+			answer_a.text = str(int(correct_answer-1-randi_range(0,randomAddition)))
 			answer_b.text = str(correct_answer)
-			answer_c.text = str(int(correct_answer+floor(1+randf()*15*1/Global.difficulty)))
+			answer_c.text = str(int(correct_answer+1+randi_range(0,randomAddition)))
 		3:
-			answer_a.text = str(int(correct_answer+floor(-2-randf()*30*1/Global.difficulty)))
-			answer_b.text = str(int(correct_answer+floor(-1-randf()*15*1/Global.difficulty)))
+			answer_a.text = str(int(correct_answer-2-randi_range(randomAddition,randomAddition*2)))
+			answer_b.text = str(int(correct_answer-1-randi_range(0,randomAddition)))
 			answer_c.text = str(correct_answer)
 # ---- Button pressed handlers ----
 func _on_answer_a_pressed():
@@ -59,9 +81,11 @@ func check_answer(choice):
 		print("Correct!")
 		question_panel.visible = false
 		# Move to next level
-		get_tree().change_scene_to_file("res://Levels/Level.tscn")
+		Global.switchToLevel.emit()
 	else:
 		print("Wrong!")
 		Global.lives -= 1
 		if Global.lives <= 0:
-			get_tree().change_scene_to_file("res://main_menu.tscn")
+			Global.switchToMain.emit()
+		else:
+			Global.switchToLevel.emit()

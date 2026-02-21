@@ -660,15 +660,14 @@ show_percentage = false
 [node name="ClickParticle" parent="." unique_id=1348139992 instance=ExtResource("7_y3x56")]
 
 [node name="Transition" type="ColorRect" parent="." unique_id=1401210668]
-visible = false
 z_index = 1000
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -156.99998
-offset_top = -488.99997
-offset_right = 528.6329
-offset_bottom = 179.08359
+offset_left = -113.0
+offset_top = -474.99997
+offset_right = 587.0
+offset_bottom = 225.00003
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.5235988

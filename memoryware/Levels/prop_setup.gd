@@ -6,11 +6,11 @@ extends Node2D
 @onready var transition: ColorRect = $"../Transition"
 
 
-@export var backpack_count: int = randi_range(floor(1+Global.difficulty/2),floor(Global.difficulty)+4)
-@export var tree_count: int = randi_range(floor(0+Global.difficulty/4),floor(Global.difficulty/2.5)+2)
-@export var trashcan_count: int = randi_range(floor(1+Global.difficulty/2),floor(Global.difficulty/1.5)+2)
-@export var snail_count: int = randi_range(floor(0+Global.difficulty/3),floor(Global.difficulty/2)+1)
-@export var balloon_count: int = randi_range(floor(0+Global.difficulty/3),floor(Global.difficulty/2)+2)
+@export var backpack_count: int = randi_range(floor(1+Global.difficulty/2.5),floor(Global.difficulty/1.5)+2)
+@export var tree_count: int = randi_range(floor(0+Global.difficulty/5),floor(Global.difficulty/3)+1)
+@export var trashcan_count: int = randi_range(floor(1+Global.difficulty/4),floor(Global.difficulty/2)+2)
+@export var snail_count: int = randi_range(floor(0+Global.difficulty/4),floor(Global.difficulty/1.75)+1)
+@export var balloon_count: int = randi_range(floor(0+Global.difficulty/3),floor(Global.difficulty/2.25)+2)
 
 const BACKPACK = preload("res://Props/Backpack.tscn")
 const TRASHCAN = preload("res://Props/Trashcan.tscn")
@@ -111,7 +111,6 @@ func spawnProp(new_prop, colored: bool, flip_h: bool) -> void:
 		new_prop.position.x = randi_range(-230,230)
 		new_prop.position.y = randi_range(-90,100)
 		new_prop.orig_pos = new_prop.position
-		print("hello")
 
 #Function that decides which waldo question to ask, and sets the prop.
 func decide_waldo():
@@ -174,11 +173,7 @@ func decide_question():
 		1: #object count
 			var tempVar = get_child(0) #for a really bad workaround
 			Global.question_thingy = randi_range(0,tempVar.objects.size()-1)
-			print(get_children())
 			for prop in get_children():
-				print(prop.object)
-				print(Global.question_thingy)
-				print("")
 				if prop.object == Global.question_thingy:
 					Global.correct_answer += 1
 			Global.question = "How many " + str(tempVar.objects.find_key(Global.question_thingy)) + "s were there?"

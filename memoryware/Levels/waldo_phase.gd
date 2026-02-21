@@ -2,7 +2,7 @@ extends Node2D
  
 enum phases {game, end}
 var phase = phases.game
-var gameTime: float = clamp(20-Global.difficulty/2,5,100)
+var gameTime: float = clamp(15-Global.difficulty/3,5,100)
 var won: bool = false
 
 @onready var game_timer: Timer = $GameTimer
@@ -45,13 +45,13 @@ func time_ran_out() -> void:
 func transition_over() -> void:
 	if won:
 		print("You won!")
-		get_tree().change_scene_to_file("res://questions.tscn")
+		Global.switchToQuestion.emit()
 	elif Global.lives > 0:
 		print("You lost a life!")
-		get_tree().change_scene_to_file("res://Levels/Level.tscn")
+		Global.switchToQuestion.emit()
 	else:
 		print("You lost!")
-		get_tree().change_scene_to_file("res://main_menu.tscn")
+		Global.switchToMain.emit()
 		
 		
 func prop_clicked(is_waldo, prop) -> void:
