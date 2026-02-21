@@ -94,7 +94,8 @@ func _ready() -> void:
 		new_prop.x_range = randi_range(40,70)
 		new_prop.position.x = randi_range(-180,180)
 		new_prop.speed = randf_range(1.5,1.7)
-		new_prop.z_index = 3
+		new_prop.z_index = 2
+		new_prop.position.x = randi_range(-150,150)
 		
 	decide_question()
 
@@ -157,6 +158,13 @@ func decide_waldo():
 			elif waldo_prop == SNAIL:
 				waldo.x_range = randi_range(15,50)
 				waldo.speed = randf_range(0.3,0.8)
+				waldo.position.x = randi_range(-180,180)
+			elif waldo_prop == AIRPLANE:
+				waldo.x_range = randi_range(40,70)
+				waldo.position.x = randi_range(-180,180)
+				waldo.speed = randf_range(1.5,1.7)
+				waldo.z_index = 2
+				waldo.position.x = randi_range(-150,150)
 				
 		1: #ONLY MOVING PROP OF A NON-MOVING TYPE
 			waldo_prop = no_movement_props[randi_range(0,no_movement_props.size()-1)]

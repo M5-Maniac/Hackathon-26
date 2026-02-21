@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bt2cknysmvjs2" path="res://Assets/GameThemeMain.mp3" id="3_lquwl"]
 [ext_resource type="AudioStream" uid="uid://cb7jqfcwuxiyp" path="res://Assets/QuizMusic.mp3" id="4_lquwl"]
 [ext_resource type="AudioStream" uid="uid://dlrsk0xfaynkw" path="res://Assets/QuizStart.mp3" id="5_7mycd"]
+[ext_resource type="FontFile" uid="uid://civixfaq0xuu5" path="res://Assets/edit-undo/edunline.ttf" id="6_7mycd"]
 
 [node name="Main" type="Node2D" unique_id=1036966254]
 script = ExtResource("1_ig7tw")
@@ -28,3 +29,23 @@ parameters/looping = true
 [node name="QuizSfx" type="AudioStreamPlayer2D" parent="." unique_id=565390197]
 stream = ExtResource("5_7mycd")
 parameters/looping = true
+
+[node name="LifeDisplay" type="RichTextLabel" parent="." unique_id=1395418546]
+z_index = 1000
+offset_left = -240.0
+offset_top = -135.0
+offset_right = -69.0
+offset_bottom = -95.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("6_7mycd")
+text = "LIVES:"
+
+[node name="ScoreDisplay" type="RichTextLabel" parent="." unique_id=190109323]
+z_index = 1000
+offset_left = 222.0
+offset_top = -71.0
+offset_right = 304.0
+offset_bottom = -31.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("6_7mycd")
+text = "Score:"

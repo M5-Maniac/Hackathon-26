@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://c8h46hhl8lsp1" path="res://camera_2d.gd" id="4_x7rwe"]
 [ext_resource type="FontFile" uid="uid://dir5njmyrv3ae" path="res://Assets/edit-undo/editundo.ttf" id="5_lf2mf"]
 [ext_resource type="PackedScene" uid="uid://suyqf0ki86vh" path="res://click_particle.tscn" id="6_80cou"]
-[ext_resource type="PackedScene" uid="uid://bkr280of2gmq8" path="res://life_display.tscn" id="7_xosfc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m3ha0"]
 texture = ExtResource("2_w0h0a")
@@ -157,8 +156,5 @@ wait_time = 1.5
 [node name="GameTimer" type="Timer" parent="." unique_id=1416522149]
 wait_time = 20.0
 one_shot = true
-
-[node name="LifeDisplay" parent="." unique_id=997425920 instance=ExtResource("7_xosfc")]
-mouse_filter = 2
 
 [connection signal="timeout" from="GameTimer" to="Props" method="_on_game_timer_timeout"]

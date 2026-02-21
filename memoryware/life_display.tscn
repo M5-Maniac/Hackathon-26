@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bkr280of2gmq8"]
 
 [ext_resource type="FontFile" uid="uid://civixfaq0xuu5" path="res://Assets/edit-undo/edunline.ttf" id="1_nccn1"]
-[ext_resource type="Script" uid="uid://c24wc82trlysm" path="res://life_display.gd" id="2_majqo"]
+
+[sub_resource type="GDScript" id="GDScript_nccn1"]
 
 [node name="LifeDisplay" type="RichTextLabel" unique_id=997425920]
 z_index = 2000
@@ -11,4 +12,4 @@ offset_right = -160.0
 offset_bottom = -96.0
 theme_override_fonts/normal_font = ExtResource("1_nccn1")
 text = "LIVES:"
-script = ExtResource("2_majqo")
+script = SubResource("GDScript_nccn1")

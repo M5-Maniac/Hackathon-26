@@ -8,7 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	Global.cameraPosition = position
 	#slight swaying effect 
 	#actually this kinda causes motion sickness and weird pixel effects. might use later but sparingly
 	#rotation = delta*sin(Time.get_ticks_msec()/10.0)/1.5

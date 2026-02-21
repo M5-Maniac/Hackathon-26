@@ -11,6 +11,9 @@ const LEVEL_2 = preload("res://Levels/Level2.tscn")
 
 @onready var visual: Node2D = $Visual
 
+@onready var life_display: RichTextLabel = $LifeDisplay
+@onready var score_display: RichTextLabel = $ScoreDisplay
+
 var main
 var level
 var questions
@@ -24,8 +27,10 @@ func _ready() -> void:
 	Global.switchToQuestion.connect(switch_to_question)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	life_display.text = "LIVES: " + str(Global.lives)
+	life_display.position = Vector2(-240.0,-135) + Global.cameraPosition
+	score_display.text = "SCORE: " + str(Global.score)
+	score_display.position = Vector2(166.0,-135) + Global.cameraPosition
 func switch_to_level():
 	menu_music.stop()
 	quiz_music.stop()

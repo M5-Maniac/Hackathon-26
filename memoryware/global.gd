@@ -9,7 +9,9 @@ signal switchToQuestion()
 var inputHandled: bool = false #boolean thats true when hovering or grabbing a prop, to avoid overlap/grabbing multiple.
 var lives = 3
 var difficulty = 1
+var score = 0
 
+var cameraPosition: Vector2 = Vector2(0,0)
 
 enum question_types {color, object}
 var question_type = question_types.color

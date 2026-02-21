@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://bpfwo13pkaayd" path="res://main_menu.gd" id="1_7vrkn"]
 [ext_resource type="PackedScene" uid="uid://bxes020iwqd6c" path="res://Props/Tree.tscn" id="4_glbon"]
 [ext_resource type="PackedScene" uid="uid://c3jmau60w45xh" path="res://Props/Snail.tscn" id="4_jix8l"]
+[ext_resource type="Script" uid="uid://c8h46hhl8lsp1" path="res://camera_2d.gd" id="5_glbon"]
+[ext_resource type="FontFile" uid="uid://civixfaq0xuu5" path="res://Assets/edit-undo/edunline.ttf" id="6_nlkkf"]
 
 [node name="Control" type="Control" unique_id=323320716]
 layout_mode = 3
@@ -170,6 +172,16 @@ color = Color(0.08365663, 0.204007, 0.30549613, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=840952233]
 zoom = Vector2(4, 4)
+script = ExtResource("5_glbon")
+
+[node name="Score" type="RichTextLabel" parent="." unique_id=1800625804]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 90.0
+offset_right = 550.0
+offset_bottom = 320.0
+theme_override_fonts/normal_font = ExtResource("6_nlkkf")
+text = "Last Score: "
 
 [connection signal="pressed" from="MarginContainer/PlayButton" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]

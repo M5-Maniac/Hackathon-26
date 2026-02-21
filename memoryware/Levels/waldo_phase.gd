@@ -58,6 +58,7 @@ func prop_clicked(is_waldo, prop) -> void:
 	if is_waldo and !game_timer.paused:
 		won = true
 		Global.difficulty += 1
+		Global.score += 1
 		hint_label.visible = true
 		match Global.question_type:
 			0:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://tjxdwfrkhgqs" path="res://questions.gd" id="1_uqn54"]
 [ext_resource type="FontFile" uid="uid://dir5njmyrv3ae" path="res://Assets/edit-undo/editundo.ttf" id="3_dp6bu"]
-[ext_resource type="PackedScene" uid="uid://bkr280of2gmq8" path="res://life_display.tscn" id="3_ygnt8"]
+[ext_resource type="Script" uid="uid://c8h46hhl8lsp1" path="res://camera_2d.gd" id="3_rry2l"]
 [ext_resource type="AudioStream" uid="uid://cb7jqfcwuxiyp" path="res://Assets/QuizMusic.mp3" id="4_dp6bu"]
 
 [node name="Questions" type="Node2D" unique_id=1299180049]
@@ -79,14 +79,15 @@ text = "wow
 "
 
 [node name="Transition" type="ColorRect" parent="CanvasLayer" unique_id=1649651871]
+visible = false
 z_index = 1000
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -164.99998
-offset_top = -438.0
-offset_right = -1385.0
-offset_bottom = -918.0
+offset_left = -128.0
+offset_top = -431.99997
+offset_right = -1348.0
+offset_bottom = -912.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.5235988
@@ -97,20 +98,28 @@ z_index = 1000
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -772.9999
-offset_top = -942.0
-offset_right = -1892.9999
-offset_bottom = -1222.0
+offset_left = -906.0
+offset_top = -1040.0
+offset_right = -1826.0
+offset_bottom = -1320.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.5235988
 color = Color(0.08365663, 0.204007, 0.30549613, 1)
 
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1668520934]
+modulate = Color(0.9050983, 0.71330017, 1, 1)
+offset_left = -116.0
+offset_top = 18.0
+offset_right = 227.0
+offset_bottom = 58.0
+theme_override_fonts/normal_font = ExtResource("3_dp6bu")
+text = "(Not including the target prop)"
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1485265638]
 ignore_rotation = false
 zoom = Vector2(4, 4)
-
-[node name="LifeDisplay" parent="." unique_id=997425920 instance=ExtResource("3_ygnt8")]
+script = ExtResource("3_rry2l")
 
 [node name="EndTimer" type="Timer" parent="." unique_id=484142837]
 wait_time = 0.75

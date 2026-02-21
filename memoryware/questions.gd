@@ -85,6 +85,7 @@ func _on_answer_c_pressed():
 func check_answer(choice):
 	if choice == correct_answer_index:
 		print("Correct!")
+		Global.score += 1
 		question_panel.visible = false
 		# Move to next level
 		phase = phases.end
