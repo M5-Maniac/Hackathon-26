@@ -42,7 +42,6 @@ func _ready() -> void:
 		2:
 			task_label.text = "Find the stationary " + str(waldo.objects.find_key(waldo.object)) + "!"
 
-	decide_question()
 	
 	
 	#EXTRA PROP SPAWNING
@@ -72,7 +71,8 @@ func _ready() -> void:
 		new_prop.z_index = 2
 		waldo.speed = randf_range(1,1.5)
 		
-		
+	decide_question()
+
 	#SIGNAL CONNECTIONS
 	Global.propClicked.connect(prop_clicked)
 	Global.propDropped.connect(prop_dropped)
@@ -97,7 +97,7 @@ func prop_dropped(dropped_prop) -> void:
 #FUNCTION FOR SPAWNING PROPS
 func spawnProp(new_prop, colored: bool, flip_h: bool) -> void:
 	new_prop.position.x = randi_range(-230,230)
-	new_prop.position.y = randi_range(-90,115)
+	new_prop.position.y = randi_range(-90,100)
 	new_prop.orig_pos = new_prop.position
 	if flip_h:
 		new_prop.flip_h = (randf() < 0.5)
@@ -109,7 +109,7 @@ func spawnProp(new_prop, colored: bool, flip_h: bool) -> void:
 	#THIS CODE IS BROKEN RN DOESNT WORK. need to fix
 	while new_prop.prop_hitbox.get_overlapping_areas().size()>0:
 		new_prop.position.x = randi_range(-230,230)
-		new_prop.position.y = randi_range(-90,115)
+		new_prop.position.y = randi_range(-90,100)
 		new_prop.orig_pos = new_prop.position
 		print("hello")
 
@@ -122,7 +122,7 @@ func decide_waldo():
 			waldo_prop = color_props[randi_range(0,color_props.size()-1)]
 			waldo = waldo_prop.instantiate()
 			waldo.position.x = randi_range(-230,230)
-			waldo.position.y = randi_range(-90,115)
+			waldo.position.y = randi_range(-90,100)
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			props.add_child(waldo)
@@ -138,7 +138,7 @@ func decide_waldo():
 			waldo_prop = no_movement_props[randi_range(0,no_movement_props.size()-1)]
 			waldo = waldo_prop.instantiate()
 			waldo.position.x = randi_range(-230,230)
-			waldo.position.y = randi_range(-90,115)
+			waldo.position.y = randi_range(-90,100)
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			if randf()<0.5:
@@ -151,7 +151,7 @@ func decide_waldo():
 			waldo_prop = movement_props[randi_range(0,movement_props.size()-1)]
 			waldo = waldo_prop.instantiate()
 			waldo.position.x = randi_range(-230,230)
-			waldo.position.y = randi_range(-90,115)
+			waldo.position.y = randi_range(-90,100)
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
 			props.add_child(waldo)
@@ -174,7 +174,11 @@ func decide_question():
 		1: #object count
 			var tempVar = get_child(0) #for a really bad workaround
 			Global.question_thingy = randi_range(0,tempVar.objects.size()-1)
+			print(get_children())
 			for prop in get_children():
+				print(prop.object)
+				print(Global.question_thingy)
+				print("")
 				if prop.object == Global.question_thingy:
 					Global.correct_answer += 1
 			Global.question = "How many " + str(tempVar.objects.find_key(Global.question_thingy)) + "s were there?"

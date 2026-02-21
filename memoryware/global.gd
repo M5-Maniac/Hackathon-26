@@ -8,8 +8,8 @@ var lives = 3
 var difficulty = 1
 
 
-enum question_types {color_count, object_count}
-var question_type = question_types.color_count
+enum question_types {color, object}
+var question_type = question_types.color
 var question_thingy
 var question: String = "Error?!"
 var correct_answer: int = 0

@@ -10,6 +10,8 @@ var won: bool = false
 @onready var progress_bar: ProgressBar = $Camera2D/ProgressBar
 @onready var transition: ColorRect = $Transition
 @onready var transition_2: ColorRect = $Transition2
+@onready var hint_label: RichTextLabel = $Camera2D/HintLabel
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,9 +37,10 @@ func _process(delta: float) -> void:
 func time_ran_out() -> void:
 	if !won:
 		game_timer.paused = true
-		phase = phases.end
 		Global.lives -= 1
-		end_timer.start()
+	phase = phases.end
+	end_timer.start()
+	
 	
 func transition_over() -> void:
 	if won:
@@ -53,11 +56,14 @@ func transition_over() -> void:
 		
 func prop_clicked(is_waldo, prop) -> void:
 	if is_waldo and !game_timer.paused:
-		game_timer.paused = true
 		won = true
-		phase = phases.end
 		Global.difficulty += 1
+		hint_label.visible = true
+		match Global.question_type:
+			0:
+				hint_label.text = "Hint: count the colors of objects."
+			1:
+				hint_label.text = "Hint: count each type of object."
 		
-		end_timer.start()
 		
 		
