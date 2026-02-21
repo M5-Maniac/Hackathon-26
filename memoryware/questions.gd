@@ -7,6 +7,7 @@ extends Node2D  # attach this to your main scene root (Node2D)
 
 @onready var transition: ColorRect = $CanvasLayer/Transition
 @onready var transition_2: ColorRect = $CanvasLayer/Transition2
+@onready var end_timer: Timer = $EndTimer
 
 enum phases {game, end}
 var phase = phases.game
@@ -81,11 +82,23 @@ func check_answer(choice):
 		print("Correct!")
 		question_panel.visible = false
 		# Move to next level
-		Global.switchToLevel.emit()
+		phase = phases.end
+		answer_a.queue_free()
+		answer_b.queue_free()
+		answer_c.queue_free()
+		end_timer.start()
 	else:
 		print("Wrong!")
 		Global.lives -= 1
 		if Global.lives <= 0:
 			Global.switchToMain.emit()
 		else:
-			Global.switchToLevel.emit()
+			phase = phases.end
+			answer_a.queue_free()
+			answer_b.queue_free()
+			answer_c.queue_free()
+			end_timer.start()
+
+
+func _on_end_timer_timeout() -> void:
+		Global.switchToLevel.emit()

@@ -96,10 +96,10 @@ z_index = 1000
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1250.0
-offset_top = -1082.9999
-offset_right = -2570.0
-offset_bottom = -1562.9999
+offset_left = -772.9999
+offset_top = -942.0
+offset_right = -1892.9999
+offset_bottom = -1222.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.5235988
@@ -110,3 +110,8 @@ ignore_rotation = false
 zoom = Vector2(4, 4)
 
 [node name="LifeDisplay" parent="." unique_id=997425920 instance=ExtResource("3_ygnt8")]
+
+[node name="EndTimer" type="Timer" parent="." unique_id=484142837]
+wait_time = 0.75
+
+[connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
