@@ -62,6 +62,7 @@ func _ready() -> void:
 		var new_prop = SNAIL.instantiate()
 		spawnProp(new_prop, true, false)
 		new_prop.x_range = randi_range(15,50)
+		new_prop.position.x = randi_range(-180,180)
 		new_prop.speed = randf_range(0.3,0.8)
 	for balloons in range(balloon_count): #backpacks
 		var new_prop = BALLOON.instantiate()
@@ -69,7 +70,6 @@ func _ready() -> void:
 		new_prop.y_range = randi_range(40,70)
 		new_prop.speed = randf_range(0.5,1)
 		new_prop.z_index = 2
-		waldo.speed = randf_range(1,1.5)
 		
 	decide_question()
 
@@ -120,7 +120,7 @@ func decide_waldo():
 		0: #DIFFERENT COLOR
 			waldo_prop = color_props[randi_range(0,color_props.size()-1)]
 			waldo = waldo_prop.instantiate()
-			waldo.position.x = randi_range(-230,230)
+			waldo.position.x = randi_range(-210,210)
 			waldo.position.y = randi_range(-90,100)
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
@@ -136,7 +136,7 @@ func decide_waldo():
 		1: #ONLY MOVING PROP OF A NON-MOVING TYPE
 			waldo_prop = no_movement_props[randi_range(0,no_movement_props.size()-1)]
 			waldo = waldo_prop.instantiate()
-			waldo.position.x = randi_range(-230,230)
+			waldo.position.x = randi_range(-210,210)
 			waldo.position.y = randi_range(-90,100)
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
@@ -166,7 +166,7 @@ func decide_question():
 			var tempVar = get_child(0) #for a really bad workaround
 			Global.question_thingy = randi_range(0,tempVar.colors.size()-1)
 			for prop in get_children():
-				if prop.color == Global.question_thingy:
+				if prop.color == Global.question_thingy and !prop.is_waldo:
 					Global.correct_answer += 1
 			Global.question = "How many " + str(tempVar.colors.find_key(Global.question_thingy)) + " objects were there?"
 			
@@ -174,6 +174,6 @@ func decide_question():
 			var tempVar = get_child(0) #for a really bad workaround
 			Global.question_thingy = randi_range(0,tempVar.objects.size()-1)
 			for prop in get_children():
-				if prop.object == Global.question_thingy:
+				if prop.object == Global.question_thingy and !prop.is_waldo:
 					Global.correct_answer += 1
 			Global.question = "How many " + str(tempVar.objects.find_key(Global.question_thingy)) + "s were there?"
