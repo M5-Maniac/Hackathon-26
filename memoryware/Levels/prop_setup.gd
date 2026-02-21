@@ -159,7 +159,7 @@ func decide_question():
 	match Global.question_type:
 		0: #color count
 			var tempVar = get_child(randi_range(0,get_child_count()-1)) #for a really bad workaround
-			Global.question_thingy = tempVar.object
+			Global.question_thingy = tempVar.color
 			for prop in get_children():
 				if prop.color == Global.question_thingy and !prop.is_waldo:
 					Global.correct_answer += 1
