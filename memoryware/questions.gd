@@ -64,12 +64,12 @@ func show_question():
 			answer_b.text = str(int(correct_answer+1+randi_range(0,randomAddition)))
 			answer_c.text = str(int(correct_answer+2+randi_range(randomAddition,randomAddition*2)))
 		2:
-			answer_a.text = str(clamp(int(correct_answer-1-randi_range(0,randomAddition)),0,200))
+			answer_a.text = str(clamp(int(correct_answer-1-randi_range(1,randomAddition)),0,200))
 			answer_b.text = str(correct_answer)
 			answer_c.text = str(int(correct_answer+1+randi_range(0,randomAddition)))
 		3:
-			answer_a.text = str(clamp(int(correct_answer-2-randi_range(randomAddition,randomAddition*2)),0,200))
-			answer_b.text = str(clamp(int(correct_answer-1-randi_range(0,randomAddition)),0,200))
+			answer_a.text = str(clamp(int(correct_answer-2-randi_range(randomAddition,randomAddition*2)),1,200))
+			answer_b.text = str(clamp(int(correct_answer-1-randi_range(0,randomAddition)),2,200))
 			answer_c.text = str(correct_answer)
 # ---- Button pressed handlers ----
 func _on_answer_a_pressed():

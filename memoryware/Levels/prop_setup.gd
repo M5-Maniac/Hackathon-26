@@ -10,18 +10,20 @@ extends Node2D
 @export var trashcan_count: int = randi_range(floor(1+Global.difficulty/4.5),floor(Global.difficulty/2)+1)
 @export var snail_count: int = randi_range(floor(0+Global.difficulty/4),floor(Global.difficulty/1.75)+1)
 @export var balloon_count: int = randi_range(floor(0+Global.difficulty/3),floor(Global.difficulty/2.25))
-@export var flower_count: int = randi_range(floor(1+Global.difficulty/5),floor(Global.difficulty/2+3))
+@export var flower_count: int = randi_range(floor(1+Global.difficulty/5),floor(Global.difficulty/1.25+3))
+@export var tree_count: int = randi_range(floor(1+Global.difficulty/5),floor(Global.difficulty/2+1))
 
 const BACKPACK = preload("res://Props/Backpack.tscn")
 const TRASHCAN = preload("res://Props/Trashcan.tscn")
 const SNAIL = preload("res://Props/Snail.tscn")
 const BALLOON = preload("res://Props/Balloon.tscn")
 const FLOWER = preload("res://Props/Flower.tscn")
-
+const TREE = preload("res://Props/Tree.tscn")
+const TREE_2 = preload("res://Props/Tree2.tscn")
 
 enum waldo_types { only_color, only_movement, only_stopped}
 var color_props: Array = [BACKPACK,SNAIL, BALLOON,FLOWER] #Props that can be differentiated by color.
-var no_movement_props: Array = [TRASHCAN,BACKPACK,FLOWER] #Props that are typically stationary.
+var no_movement_props: Array = [TRASHCAN,BACKPACK,FLOWER, TREE] #Props that are typically stationary.
 var movement_props: Array = [SNAIL, BALLOON] #Props that normally move.
 
 var waldo
@@ -56,6 +58,13 @@ func _ready() -> void:
 		new_prop.x_range = randi_range(15,50)
 		new_prop.position.x = randi_range(-180,180)
 		new_prop.speed = randf_range(0.3,0.8)
+	for trees in range(tree_count): #backpacks
+		if randf() < 0.5:
+			var new_prop = TREE.instantiate()
+			spawnProp(new_prop, false, false)
+		else:
+			var new_prop = TREE_2.instantiate()
+			spawnProp(new_prop, false, false)
 	for balloons in range(balloon_count): #backpacks
 		var new_prop = BALLOON.instantiate()
 		spawnProp(new_prop, true, false)

@@ -62,9 +62,9 @@ func prop_clicked(is_waldo, prop) -> void:
 		hint_label.visible = true
 		match Global.question_type:
 			0:
-				hint_label.text = "Hint: count the colors of objects."
+				hint_label.text = "Question will relate to object colors."
 			1:
-				hint_label.text = "Hint: count each type of object."
+				hint_label.text = "Question will relate to object types."
 		
 		
 		
