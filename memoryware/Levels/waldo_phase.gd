@@ -11,7 +11,6 @@ var won: bool = false
 @onready var transition: ColorRect = $Transition
 @onready var transition_2: ColorRect = $Transition2
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	game_timer.wait_time = gameTime

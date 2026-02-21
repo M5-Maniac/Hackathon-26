@@ -26,7 +26,7 @@ offset = Vector2(-4, -116)
 region_enabled = true
 region_rect = Rect2(208, 16, 152, 240)
 
-[node name="Sprite" type="Node2D" parent="." unique_id=477977283]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=230680506]
 position = Vector2(0, -5)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1872679400]

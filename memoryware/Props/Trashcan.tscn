@@ -16,7 +16,7 @@ color = 7
 texture = ExtResource("2_r0g1w")
 offset = Vector2(0, -13)
 
-[node name="Sprite" type="Node2D" parent="." unique_id=886553155]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2018287343]
 position = Vector2(0, -4)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1776254640]

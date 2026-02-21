@@ -17,9 +17,9 @@ size = Vector2(12, 20)
 [node name="Tree" type="Node2D" unique_id=1845368906]
 script = ExtResource("1_icwj3")
 object = 2
-color = 7
+color = 1
 
-[node name="Sprite" type="Node2D" parent="." unique_id=91422273]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=206783363]
 
 [node name="UncoloredSprite" type="Sprite2D" parent="." unique_id=173049501]
 scale = Vector2(0.25, 0.25)

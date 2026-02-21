@@ -96,9 +96,13 @@ func _process(delta: float) -> void:
 		position.x = orig_pos.x + x_range * cos(Time.get_ticks_msec()*speed/2500+move_offset)
 		#sprite direction
 		if -sin(Time.get_ticks_msec()*speed/2500+move_offset) < 0:
-			scale.x = -1
+			if uncolored_sprite:
+				uncolored_sprite.flip_h = true
+			prop_sprite.flip_h = true
 		else:
-			scale.x = 1
+			if uncolored_sprite:
+				uncolored_sprite.flip_h = false
+			prop_sprite.flip_h = false
 	if y_range != 0 and !grabbed:
 		position.y = orig_pos.y + y_range * cos(Time.get_ticks_msec()*speed/2500+move_offset)
 		

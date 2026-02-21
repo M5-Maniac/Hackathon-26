@@ -42,6 +42,9 @@ func _ready() -> void:
 		2:
 			task_label.text = "Find the stationary " + str(waldo.objects.find_key(waldo.object)) + "!"
 
+	decide_question()
+	
+	
 	#EXTRA PROP SPAWNING
 	for backpacks in range(backpack_count): #backpacks
 		var new_prop = BACKPACK.instantiate()
@@ -155,3 +158,23 @@ func decide_waldo():
 			if waldo_prop == BALLOON:
 				waldo.z_index = 2
 	waldo.is_waldo = true
+
+func decide_question():
+	Global.correct_answer = 0
+	Global.question_type = randi_range(0,Global.question_types.size()-1)
+	match Global.question_type:
+		0: #color count
+			var tempVar = get_child(0) #for a really bad workaround
+			Global.question_thingy = randi_range(0,tempVar.colors.size()-1)
+			for prop in get_children():
+				if prop.color == Global.question_thingy:
+					Global.correct_answer += 1
+			Global.question = "How many " + str(tempVar.colors.find_key(Global.question_thingy)) + " objects were there?"
+			
+		1: #object count
+			var tempVar = get_child(0) #for a really bad workaround
+			Global.question_thingy = randi_range(0,tempVar.objects.size()-1)
+			for prop in get_children():
+				if prop.object == Global.question_thingy:
+					Global.correct_answer += 1
+			Global.question = "How many " + str(tempVar.objects.find_key(Global.question_thingy)) + "s were there?"
