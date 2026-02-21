@@ -15,6 +15,7 @@ var questions
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	menu_music.play()
 	visual.add_child(MAIN_MENU.instantiate())
 	Global.switchToLevel.connect(switch_to_level)
 	Global.switchToMain.connect(switch_to_main)
