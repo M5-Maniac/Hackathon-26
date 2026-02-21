@@ -147,9 +147,9 @@ prop_skew = 30.0
 [node name="Snail9" parent="MarginContainer" unique_id=1390818184 instance=ExtResource("4_jix8l")]
 light_mask = 0
 z_index = 355
-position = Vector2(270, 125)
-scale = Vector2(2.5, 2.5)
-spin = 0.2
+position = Vector2(270, 115)
+scale = Vector2(2, 2)
+spin = 0.15
 
 [node name="TransitionTimer" type="Timer" parent="." unique_id=1365911821]
 

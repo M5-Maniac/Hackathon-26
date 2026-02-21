@@ -14,12 +14,17 @@ var phase = phases.game
 # ---- Variables ----
 var correct_answer: int = Global.correct_answer
 var question: String = Global.question
-var correct_answer_index = randi_range(1,3)
 
+var correct_answer_index
 # ---- Called when scene starts ----
 func _ready() -> void:
-	# Hide question panel at start
-	question_panel.visible = true
+	if correct_answer in range(0,2):
+		correct_answer_index = 1
+	elif correct_answer in range(2,4):
+		correct_answer_index = randi_range(1,2)
+	else:
+		correct_answer_index = randi_range(1,3)
+
 	show_question()
 	
 	# Connect buttons to root script
@@ -40,7 +45,7 @@ func show_question():
 	question_panel.visible = true
 	question_text.text = Global.question
 	
-	var randomAddition: int = randi_range(0,1+floor(10/Global.difficulty))
+	var randomAddition: int = randi_range(0,1+floor(5/Global.difficulty))
 	match correct_answer_index:
 		#1:
 			#answer_a.text = str(correct_answer)
@@ -59,12 +64,12 @@ func show_question():
 			answer_b.text = str(int(correct_answer+1+randi_range(0,randomAddition)))
 			answer_c.text = str(int(correct_answer+2+randi_range(randomAddition,randomAddition*2)))
 		2:
-			answer_a.text = str(int(correct_answer-1-randi_range(0,randomAddition)))
+			answer_a.text = str(clamp(int(correct_answer-1-randi_range(0,randomAddition)),0,200))
 			answer_b.text = str(correct_answer)
 			answer_c.text = str(int(correct_answer+1+randi_range(0,randomAddition)))
 		3:
-			answer_a.text = str(int(correct_answer-2-randi_range(randomAddition,randomAddition*2)))
-			answer_b.text = str(int(correct_answer-1-randi_range(0,randomAddition)))
+			answer_a.text = str(clamp(int(correct_answer-2-randi_range(randomAddition,randomAddition*2)),0,200))
+			answer_b.text = str(clamp(int(correct_answer-1-randi_range(0,randomAddition)),0,200))
 			answer_c.text = str(correct_answer)
 # ---- Button pressed handlers ----
 func _on_answer_a_pressed():

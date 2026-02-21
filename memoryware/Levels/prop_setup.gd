@@ -7,10 +7,11 @@ extends Node2D
 
 
 @export var backpack_count: int = randi_range(floor(1+Global.difficulty/2.5),floor(Global.difficulty/1.5)+2)
-@export var tree_count: int = randi_range(floor(0+Global.difficulty/5),floor(Global.difficulty/3)+1)
-@export var trashcan_count: int = randi_range(floor(1+Global.difficulty/4),floor(Global.difficulty/2)+2)
+@export var tree_count: int = randi_range(floor(0+Global.difficulty/7),floor(Global.difficulty/3)+1)
+@export var trashcan_count: int = randi_range(floor(1+Global.difficulty/4.5),floor(Global.difficulty/2)+1)
 @export var snail_count: int = randi_range(floor(0+Global.difficulty/4),floor(Global.difficulty/1.75)+1)
-@export var balloon_count: int = randi_range(floor(0+Global.difficulty/3),floor(Global.difficulty/2.25)+2)
+@export var balloon_count: int = randi_range(floor(0+Global.difficulty/3),floor(Global.difficulty/2.25))
+@export var flower_count: int = randi_range(floor(0+Global.difficulty/5),floor(Global.difficulty/4+3))
 
 const BACKPACK = preload("res://Props/Backpack.tscn")
 const TRASHCAN = preload("res://Props/Trashcan.tscn")
@@ -18,11 +19,12 @@ const TREE = preload("res://Props/Tree.tscn")
 const TREE_2 = preload("res://Props/Tree2.tscn")
 const SNAIL = preload("res://Props/Snail.tscn")
 const BALLOON = preload("res://Props/Balloon.tscn")
+const FLOWER = preload("res://Props/Flower.tscn")
 
 
 enum waldo_types { only_color, only_movement, only_stopped}
-var color_props: Array = [BACKPACK,SNAIL, BALLOON] #Props that can be differentiated by color.
-var no_movement_props: Array = [TREE,TREE_2,TRASHCAN,BACKPACK] #Props that are typically stationary.
+var color_props: Array = [BACKPACK,SNAIL, BALLOON,FLOWER] #Props that can be differentiated by color.
+var no_movement_props: Array = [TREE,TREE_2,TRASHCAN,BACKPACK,FLOWER] #Props that are typically stationary.
 var movement_props: Array = [SNAIL, BALLOON] #Props that normally move.
 
 var waldo
@@ -62,6 +64,7 @@ func _ready() -> void:
 		var new_prop = SNAIL.instantiate()
 		spawnProp(new_prop, true, false)
 		new_prop.x_range = randi_range(15,50)
+		new_prop.position.x = randi_range(-180,180)
 		new_prop.speed = randf_range(0.3,0.8)
 	for balloons in range(balloon_count): #backpacks
 		var new_prop = BALLOON.instantiate()
@@ -69,8 +72,10 @@ func _ready() -> void:
 		new_prop.y_range = randi_range(40,70)
 		new_prop.speed = randf_range(0.5,1)
 		new_prop.z_index = 2
-		waldo.speed = randf_range(1,1.5)
-		
+	for flowers in range(flower_count): #backpacks
+		var new_prop = FLOWER.instantiate()
+		spawnProp(new_prop, true, true)
+	
 	decide_question()
 
 	#SIGNAL CONNECTIONS
@@ -120,7 +125,7 @@ func decide_waldo():
 		0: #DIFFERENT COLOR
 			waldo_prop = color_props[randi_range(0,color_props.size()-1)]
 			waldo = waldo_prop.instantiate()
-			waldo.position.x = randi_range(-230,230)
+			waldo.position.x = randi_range(-210,210)
 			waldo.position.y = randi_range(-90,100)
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
@@ -136,7 +141,7 @@ func decide_waldo():
 		1: #ONLY MOVING PROP OF A NON-MOVING TYPE
 			waldo_prop = no_movement_props[randi_range(0,no_movement_props.size()-1)]
 			waldo = waldo_prop.instantiate()
-			waldo.position.x = randi_range(-230,230)
+			waldo.position.x = randi_range(-210,210)
 			waldo.position.y = randi_range(-90,100)
 			waldo.orig_pos = waldo.position
 			waldo.color = randi_range(0,waldo.colors.size()-1)
@@ -166,7 +171,7 @@ func decide_question():
 			var tempVar = get_child(0) #for a really bad workaround
 			Global.question_thingy = randi_range(0,tempVar.colors.size()-1)
 			for prop in get_children():
-				if prop.color == Global.question_thingy:
+				if prop.color == Global.question_thingy and !prop.is_waldo:
 					Global.correct_answer += 1
 			Global.question = "How many " + str(tempVar.colors.find_key(Global.question_thingy)) + " objects were there?"
 			
@@ -174,6 +179,6 @@ func decide_question():
 			var tempVar = get_child(0) #for a really bad workaround
 			Global.question_thingy = randi_range(0,tempVar.objects.size()-1)
 			for prop in get_children():
-				if prop.object == Global.question_thingy:
+				if prop.object == Global.question_thingy and !prop.is_waldo:
 					Global.correct_answer += 1
 			Global.question = "How many " + str(tempVar.objects.find_key(Global.question_thingy)) + "s were there?"
