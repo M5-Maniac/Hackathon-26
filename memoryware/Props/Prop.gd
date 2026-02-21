@@ -3,7 +3,7 @@ extends Node2D
  #classification
 
 #VARIABLE DECLARATION
-enum objects { trashcan, backpack, tree, snail, balloon, flower } #list of possible objects
+enum objects { trashcan, backpack, tree, snail, balloon, flower, table, pencil, airplane } #list of possible objects
 enum colors { red, orange, yellow, green, blue, purple, white, gray, black }
 @export var object = objects.trashcan
 @export var color = colors.blue

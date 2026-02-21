@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bmxkrbq358asb"]
+
+[ext_resource type="Script" uid="uid://btca4nmr36v4c" path="res://Props/Prop.gd" id="1_hqs02"]
+[ext_resource type="Texture2D" uid="uid://dr5m6flcbwt1w" path="res://Assets/Pencil.png" id="2_jfwqe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfuc1"]
+size = Vector2(11.999268, 4.021826)
+
+[node name="Pencil" type="Node2D" unique_id=1511672953]
+y_sort_enabled = true
+script = ExtResource("1_hqs02")
+object = 7
+color = 2
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1416578921]
+position = Vector2(0, -3)
+offset = Vector2(0, -1)
+
+[node name="UncoloredSprite" type="Sprite2D" parent="." unique_id=1116195035]
+position = Vector2(0, -3)
+texture = ExtResource("2_jfwqe")
+offset = Vector2(0, -1)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=735887491]
+position = Vector2(-1, -2)
+rotation = -0.57560647
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox" unique_id=1220791730]
+position = Vector2(2.4718938, -1.9722443)
+rotation = 0.56457067
+shape = SubResource("RectangleShape2D_sfuc1")

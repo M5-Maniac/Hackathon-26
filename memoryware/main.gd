@@ -2,6 +2,7 @@ extends Node2D
 const MAIN_MENU = preload("res://main_menu.tscn")
 const LEVEL = preload("res://Levels/Level.tscn")
 const QUESTIONS = preload("res://questions.tscn")
+const LEVEL_2 = preload("res://Levels/Level2.tscn")
 
 @onready var menu_music: AudioStreamPlayer2D = $MenuMusic
 @onready var game_music: AudioStreamPlayer2D = $GameMusic
@@ -34,9 +35,13 @@ func switch_to_level():
 	for child in visual.get_children():
 		print(child)
 		child.queue_free()
-	level = LEVEL.instantiate()
-	visual.add_child(level)
-
+	if randf() <0.5:
+		level = LEVEL.instantiate()
+		visual.add_child(level)
+	else:
+		level = LEVEL_2.instantiate()
+		visual.add_child(level)
+	
 func switch_to_question():
 	print("who")
 	quiz_sfx.play()

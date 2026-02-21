@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://vy6ys1l5wu54"]
+
+[ext_resource type="Script" uid="uid://btca4nmr36v4c" path="res://Props/Prop.gd" id="1_wrpie"]
+[ext_resource type="Texture2D" uid="uid://cxvdaboy03hv0" path="res://Assets/Balloon/Airplane.png" id="2_wrpie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfuc1"]
+size = Vector2(11.4993, 7.496785)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrpie"]
+size = Vector2(8.760501, 3.0329235)
+
+[node name="Airplane" type="Node2D" unique_id=1511672953]
+y_sort_enabled = true
+script = ExtResource("1_wrpie")
+object = 8
+color = 7
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1416578921]
+position = Vector2(0, -3)
+texture = ExtResource("2_wrpie")
+offset = Vector2(0, -1)
+
+[node name="UncoloredSprite" type="Sprite2D" parent="." unique_id=1116195035]
+position = Vector2(0, -3)
+offset = Vector2(0, -1)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=735887491]
+position = Vector2(-1, -2)
+rotation = -0.57560647
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox" unique_id=1220791730]
+position = Vector2(-1.321892, -5.326372)
+rotation = 0.56457067
+shape = SubResource("RectangleShape2D_sfuc1")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Hitbox" unique_id=1473174705]
+position = Vector2(7.132527, -0.6979518)
+rotation = 0.56457067
+shape = SubResource("RectangleShape2D_wrpie")

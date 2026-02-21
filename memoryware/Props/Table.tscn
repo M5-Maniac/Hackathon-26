@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c4f5qnfb43vx2"]
+
+[ext_resource type="Script" uid="uid://btca4nmr36v4c" path="res://Props/Prop.gd" id="1_2n0w8"]
+[ext_resource type="Texture2D" uid="uid://dwasx0asylhf2" path="res://Assets/Table.png" id="2_2n0w8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e1gv"]
+size = Vector2(20, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sikxm"]
+size = Vector2(4, 12)
+
+[node name="Trashcan" type="Node2D" unique_id=1453369605]
+y_sort_enabled = true
+script = ExtResource("1_2n0w8")
+object = 6
+color = 7
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1360966796]
+position = Vector2(0, -5)
+texture = ExtResource("2_2n0w8")
+offset = Vector2(0, -8)
+
+[node name="UncoloredSprite" type="Sprite2D" parent="." unique_id=2018287343]
+position = Vector2(0, -5)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1776254640]
+position = Vector2(0, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=493193586]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_0e1gv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1467224955]
+position = Vector2(-8, 9)
+shape = SubResource("RectangleShape2D_sikxm")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox" unique_id=1460778348]
+position = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_sikxm")

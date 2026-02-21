@@ -6,23 +6,33 @@ extends Node2D
 @onready var transition: ColorRect = $"../Transition"
 
 
-@export var backpack_count: int = randi_range(floor(0+Global.difficulty/2.5),floor(Global.difficulty/3)+2)
+@export var backpack_count: int = randi_range(floor(2+Global.difficulty/2),floor(Global.difficulty/1.25)+3)
+@export var tree_count: int = randi_range(floor(0+Global.difficulty/20),floor(Global.difficulty/8))
 @export var trashcan_count: int = randi_range(floor(1+Global.difficulty/4.5),floor(Global.difficulty/2)+1)
-@export var snail_count: int = randi_range(floor(0+Global.difficulty/4),floor(Global.difficulty/1.75)+1)
-@export var balloon_count: int = randi_range(floor(0+Global.difficulty/3),floor(Global.difficulty/2.25))
-@export var flower_count: int = randi_range(floor(1+Global.difficulty/5),floor(Global.difficulty/2+3))
+@export var snail_count: int = randi_range(floor(0+Global.difficulty/12),floor(Global.difficulty/10))
+@export var balloon_count: int = randi_range(floor(0+Global.difficulty/3),floor(Global.difficulty/4))
+@export var flower_count: int = randi_range(floor(0+Global.difficulty/7),floor(Global.difficulty/8))
+@export var table_count: int = randi_range(floor(0+Global.difficulty/5),floor(Global.difficulty/4+3))
+@export var pencil_count: int = randi_range(floor(0+Global.difficulty/5),floor(Global.difficulty/4+2))
+@export var airplane_count: int = randi_range(floor(0+Global.difficulty/5),floor(Global.difficulty/3+1))
 
+
+const AIRPLANE = preload("res://Props/Airplane.tscn")
 const BACKPACK = preload("res://Props/Backpack.tscn")
 const TRASHCAN = preload("res://Props/Trashcan.tscn")
+const TREE = preload("res://Props/Tree.tscn")
+const TREE_2 = preload("res://Props/Tree2.tscn")
 const SNAIL = preload("res://Props/Snail.tscn")
 const BALLOON = preload("res://Props/Balloon.tscn")
 const FLOWER = preload("res://Props/Flower.tscn")
+const TABLE = preload("res://Props/Table.tscn")
+const PENCIL = preload("res://Props/Pencil.tscn")
 
 
 enum waldo_types { only_color, only_movement, only_stopped}
-var color_props: Array = [BACKPACK,SNAIL, BALLOON,FLOWER] #Props that can be differentiated by color.
-var no_movement_props: Array = [TRASHCAN,BACKPACK,FLOWER] #Props that are typically stationary.
-var movement_props: Array = [SNAIL, BALLOON] #Props that normally move.
+var color_props: Array = [BACKPACK,BALLOON,TABLE,AIRPLANE] #Props that can be differentiated by color.
+var no_movement_props: Array = [TRASHCAN,BACKPACK,TABLE,PENCIL] #Props that are typically stationary.
+var movement_props: Array = [AIRPLANE, BALLOON] #Props that normally move.
 
 var waldo
 var waldo_type = waldo_types.only_color
@@ -50,6 +60,13 @@ func _ready() -> void:
 	for trashcans in range(trashcan_count): #backpacks
 		var new_prop = TRASHCAN.instantiate()
 		spawnProp(new_prop, false, false)
+	for trees in range(tree_count): #backpacks
+		if randf() < 0.5:
+			var new_prop = TREE.instantiate()
+			spawnProp(new_prop, false, false)
+		else:
+			var new_prop = TREE_2.instantiate()
+			spawnProp(new_prop, false, false)
 	for snails in range(snail_count): #backpacks
 		var new_prop = SNAIL.instantiate()
 		spawnProp(new_prop, true, false)
@@ -65,7 +82,20 @@ func _ready() -> void:
 	for flowers in range(flower_count): #backpacks
 		var new_prop = FLOWER.instantiate()
 		spawnProp(new_prop, true, true)
-	
+	for tables in range(table_count): #backpacks
+		var new_prop = TABLE.instantiate()
+		spawnProp(new_prop, true, false)
+	for pencils in range(pencil_count): #backpacks
+		var new_prop = PENCIL.instantiate()
+		spawnProp(new_prop, false, true)
+	for airplanes in range(airplane_count): #backpacks
+		var new_prop = AIRPLANE.instantiate()
+		spawnProp(new_prop, true, false)
+		new_prop.x_range = randi_range(40,70)
+		new_prop.position.x = randi_range(-180,180)
+		new_prop.speed = randf_range(1.5,1.7)
+		new_prop.z_index = 3
+		
 	decide_question()
 
 	#SIGNAL CONNECTIONS

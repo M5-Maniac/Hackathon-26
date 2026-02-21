@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c4f5qnfb43vx2"]
+[gd_scene format=3 uid="uid://7fwerfjnxl0i"]
 
 [ext_resource type="Script" uid="uid://btca4nmr36v4c" path="res://Props/Prop.gd" id="1_1qo7j"]
 [ext_resource type="Texture2D" uid="uid://h15kcs2td0cq" path="res://Assets/Trashcan.png" id="2_r0g1w"]
@@ -7,7 +7,7 @@
 radius = 9.0
 height = 26.0
 
-[node name="Trashcan" type="Node2D" unique_id=1453369605]
+[node name="Table" type="Node2D" unique_id=1453369605]
 y_sort_enabled = true
 script = ExtResource("1_1qo7j")
 color = 7
