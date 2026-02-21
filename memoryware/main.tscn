@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://b4jvahp5c0xqi"]
 
 [ext_resource type="Script" uid="uid://di8bm8eogxa6c" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="AudioStream" uid="uid://b3efs4hxidn3i" path="res://Assets/Siberian.mp3" id="2_h2yge"]
-[ext_resource type="AudioStream" uid="uid://cuy5s1fy3onlv" path="res://Assets/CirKillShopTheme.wav" id="3_1bvp3"]
+[ext_resource type="AudioStream" uid="uid://bacpbw2s28iun" path="res://Assets/MenuMusicMain.mp3" id="2_lquwl"]
+[ext_resource type="AudioStream" uid="uid://bt2cknysmvjs2" path="res://Assets/GameThemeMain.mp3" id="3_lquwl"]
+[ext_resource type="AudioStream" uid="uid://cb7jqfcwuxiyp" path="res://Assets/QuizMusic.mp3" id="4_lquwl"]
+[ext_resource type="AudioStream" uid="uid://dlrsk0xfaynkw" path="res://Assets/QuizStart.mp3" id="5_7mycd"]
 
 [node name="Main" type="Node2D" unique_id=1036966254]
 script = ExtResource("1_ig7tw")
@@ -10,10 +12,19 @@ script = ExtResource("1_ig7tw")
 [node name="Visual" type="Node2D" parent="." unique_id=1195596224]
 
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="." unique_id=1647814337]
-stream = ExtResource("2_h2yge")
+stream = ExtResource("2_lquwl")
 volume_db = -10.0
 parameters/looping = true
 
 [node name="GameMusic" type="AudioStreamPlayer2D" parent="." unique_id=1072163189]
-stream = ExtResource("3_1bvp3")
+stream = ExtResource("3_lquwl")
 volume_db = -10.0
+
+[node name="QuizMusic" type="AudioStreamPlayer2D" parent="." unique_id=1876716736]
+stream = ExtResource("4_lquwl")
+volume_db = -15.0
+parameters/looping = true
+
+[node name="QuizSfx" type="AudioStreamPlayer2D" parent="." unique_id=565390197]
+stream = ExtResource("5_7mycd")
+parameters/looping = true

@@ -5,7 +5,8 @@ const QUESTIONS = preload("res://questions.tscn")
 
 @onready var menu_music: AudioStreamPlayer2D = $MenuMusic
 @onready var game_music: AudioStreamPlayer2D = $GameMusic
-
+@onready var quiz_music: AudioStreamPlayer2D = $QuizMusic
+@onready var quiz_sfx: AudioStreamPlayer2D = $QuizSfx
 
 @onready var visual: Node2D = $Visual
 
@@ -26,6 +27,7 @@ func _process(delta: float) -> void:
 
 func switch_to_level():
 	menu_music.stop()
+	quiz_music.stop()
 	if !game_music.playing:
 		game_music.play()
 		
@@ -37,6 +39,13 @@ func switch_to_level():
 
 func switch_to_question():
 	print("who")
+	quiz_sfx.play()
+	game_music.stop()
+	await get_tree().create_timer(1.0).timeout
+	quiz_music.play()
+	quiz_sfx.stop()
+	
+	
 	for child in visual.get_children():
 		child.queue_free()
 	questions = QUESTIONS.instantiate()
@@ -45,6 +54,7 @@ func switch_to_question():
 func switch_to_main():
 	print("hi")
 	game_music.stop()
+	quiz_music.stop()
 	menu_music.play()
 	for child in visual.get_children():
 		child.queue_free()

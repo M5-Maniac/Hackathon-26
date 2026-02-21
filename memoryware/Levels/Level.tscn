@@ -697,4 +697,6 @@ one_shot = true
 [node name="LifeDisplay" parent="." unique_id=997425920 instance=ExtResource("7_qc8g6")]
 mouse_filter = 2
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1717263996]
+
 [connection signal="timeout" from="GameTimer" to="Props" method="_on_game_timer_timeout"]

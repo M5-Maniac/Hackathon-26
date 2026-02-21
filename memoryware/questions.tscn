@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://tjxdwfrkhgqs" path="res://questions.gd" id="1_uqn54"]
 [ext_resource type="FontFile" uid="uid://dir5njmyrv3ae" path="res://Assets/edit-undo/editundo.ttf" id="3_dp6bu"]
 [ext_resource type="PackedScene" uid="uid://bkr280of2gmq8" path="res://life_display.tscn" id="3_ygnt8"]
+[ext_resource type="AudioStream" uid="uid://cb7jqfcwuxiyp" path="res://Assets/QuizMusic.mp3" id="4_dp6bu"]
 
 [node name="Questions" type="Node2D" unique_id=1299180049]
 script = ExtResource("1_uqn54")
@@ -113,5 +114,9 @@ zoom = Vector2(4, 4)
 
 [node name="EndTimer" type="Timer" parent="." unique_id=484142837]
 wait_time = 0.75
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=423365745]
+stream = ExtResource("4_dp6bu")
+autoplay = true
 
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
